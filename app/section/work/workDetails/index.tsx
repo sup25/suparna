@@ -8,7 +8,7 @@ export const workDetails = [
     subtitle: "Streamlined Tool Management for Military and Industrial Use",
     image: heat1,
     tags: ["Shopify", "B2B Solutions"],
-    buttonText: "Open Case",
+    buttonText: "Explore Work",
   },
   {
     title: "Battalion Tools",
@@ -16,6 +16,6 @@ export const workDetails = [
     subtitle: "Efficient Tool Management with Advanced Mobile Solutions",
     image: mobile1,
     tags: ["React Native", "Cross-Platform"],
-    buttonText: "Explore Project",
+    buttonText: "Explore Work",
   },
 ];
