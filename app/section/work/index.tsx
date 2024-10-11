@@ -11,14 +11,27 @@ const Works = () => {
     <div className="section">
       <div className="container">
         <Animate.FadeDown className="py-16 relative overflow-hidden">
-          <div className="relative  mx-auto px-4 z-10">
+          <div className="relative mx-auto px-4 z-10">
             {workDetails.map((work, index) => (
               <Card
                 key={index}
-                className="overflow-hidden bg-[rgb(var(--foreground))] rounded-3xl transition-all mb-12"
+                className="overflow-hidden bg-[rgb(var(--foreground))] rounded-xl transition-all mb-12"
               >
                 <CardContent className="p-8 md:p-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    {/* Image Section */}
+                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={work.image}
+                          alt={`${work.title} Interface`}
+                          layout="fill"
+                          objectFit="cover"
+                          className="brightness-105 contrast-105"
+                        />
+                      </div>
+                    </div>
+
                     <div className="space-y-4 flex flex-col justify-between">
                       <div>
                         <h1 className="text-4xl md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
@@ -51,19 +64,6 @@ const Works = () => {
                           <ChevronRight className="z-10 ml-2 h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-2" />
                           <span className="absolute inset-0 bg-transparent group-hover:bg-gradient-to-r group-hover:from-[#FFD700] group-hover:to-transparent transition-all duration-300 ease-in-out w-1/2" />
                         </button>
-                      </div>
-                    </div>
-
-                    {/* Image Section */}
-                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={work.image}
-                          alt={`${work.title} Interface`}
-                          layout="fill"
-                          objectFit="cover"
-                          className="brightness-105 contrast-105"
-                        />
                       </div>
                     </div>
                   </div>
