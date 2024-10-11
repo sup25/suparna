@@ -4,6 +4,8 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { useTheme } from "../../context/themeProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Animate } from "@/app/animation";
+
 const Navbar = () => {
   const pathname = usePathname();
   const { isDarkTheme, toggleTheme } = useTheme();
@@ -16,7 +18,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="section sticky top-6 z-[99999] flex justify-center mb-5">
+    <Animate.ZoomIn className="section sticky top-6 z-[99999] flex justify-center mb-5">
       <div className="container flex justify-center">
         <nav
           className={`flex ${
@@ -50,7 +52,7 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-    </div>
+    </Animate.ZoomIn>
   );
 };
 
