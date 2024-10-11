@@ -14,8 +14,8 @@ const Hero = () => {
             <TitleSlogan />
             <Description />
             <Connection />
-            <CopyRight />
           </div>
+          <CopyRight />
         </section>
       </div>
     </div>
