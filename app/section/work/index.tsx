@@ -33,8 +33,8 @@ const Works = () => {
                     </div>
 
                     <div className="space-y-4 flex flex-col justify-between">
-                      <div>
-                        <h1 className="text-4xl md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
+                      <div className=" ">
+                        <h1 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
                           <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-semibold">
                             {work.type}
