@@ -1,8 +1,8 @@
 import React from "react";
-import Work from "../section/work";
+import Works from "../section/work";
 
 function page() {
-  return <Work />;
+  return <Works />;
 }
 
 export default page;

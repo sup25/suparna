@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "./context/themeProvider";
 import Navbar from "./components/navbar";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,12 +45,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider>
-        <body
-          className={`${geistSans.variable} ${inter.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
-        >
-          <Navbar />
-          {children}
-        </body>
+        <TooltipProvider>
+          <body
+            className={`${geistSans.variable} ${inter.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
+          >
+            <Navbar />
+            {children}
+          </body>
+        </TooltipProvider>
       </ThemeProvider>
     </html>
   );
