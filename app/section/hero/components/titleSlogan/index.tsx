@@ -23,7 +23,7 @@ const TitleSlogan = () => {
           <motion.span
             key={i}
             style={{ display: "inline-block" }}
-            initial={{ color: "#0096FF" }}
+            initial={{ color: "#FFD700" }}
             animate={{ color: isDarkTheme ? "#ffffff" : "#000000" }}
             transition={{ delay: i * 0.15, duration: 0.5 }}
             whileHover={{ scale: 1.2 }}
@@ -36,7 +36,7 @@ const TitleSlogan = () => {
           <motion.span
             key={i + 7}
             style={{ display: "inline-block" }}
-            initial={{ color: "#0096FF" }}
+            initial={{ color: "#FFD700" }}
             animate={{ color: isDarkTheme ? "#ffffff" : "#000000" }}
             transition={{ delay: (i + 7) * 0.15, duration: 0.5 }}
             whileHover={{ scale: 1.2 }}
@@ -46,7 +46,6 @@ const TitleSlogan = () => {
         ))}
       </motion.h1>
 
-      {/* Hanger Icon with Continuous Animation */}
       <motion.div
         className="mt-4 md:text-2xl text-xl text-[rgb(var(--foreground))] flex items-center "
         initial={{ opacity: 0, y: 50 }}

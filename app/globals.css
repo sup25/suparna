@@ -11,7 +11,7 @@
 
 .dark {
   --background: 10, 10, 10;
-  --foreground: 237, 237, 237;
+  --foreground: 255, 255, 255;
   --border-color: rgb(100, 100, 100);
   --shadow-color: rgba(238, 231, 231, 0.396);
 }

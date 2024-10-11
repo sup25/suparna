@@ -1,6 +1,7 @@
 "use client";
 
 import Connection from "./components/connection";
+import CopyRight from "./components/copyright";
 import Description from "./components/description";
 import TitleSlogan from "./components/titleSlogan";
 
@@ -13,6 +14,7 @@ const Hero = () => {
             <TitleSlogan />
             <Description />
             <Connection />
+            <CopyRight />
           </div>
         </section>
       </div>
