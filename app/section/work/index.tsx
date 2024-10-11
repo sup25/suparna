@@ -32,7 +32,7 @@ const Works = () => {
                       </div>
                     </div>
 
-                    <div className="space-y-4 flex flex-col justify-between">
+                    <div className="space-y-4 flex flex-col justify-between h-full md:py-5 py-0">
                       <div className=" ">
                         <h1 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
@@ -43,11 +43,8 @@ const Works = () => {
                         <p className="text-lg pt-2 w-full font-inter max-w-md text-[rgb(var(--background))] leading-relaxed">
                           "{work.subtitle}"
                         </p>
-                      </div>
 
-                      {/* Tags */}
-                      <div className="pb-10">
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 pt-4">
                           {work.tags.map((tag, idx) => (
                             <span
                               key={idx}
@@ -58,6 +55,8 @@ const Works = () => {
                           ))}
                         </div>
                       </div>
+
+                      {/* Tags */}
 
                       {/* Button */}
                       <div className="w-full">
