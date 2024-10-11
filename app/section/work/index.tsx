@@ -36,7 +36,9 @@ const Works = () => {
                       <div>
                         <h1 className="text-4xl md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
-                          <span className="text-[#FFD700]">{work.type}</span>
+                          <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-semibold">
+                            {work.type}
+                          </span>
                         </h1>
                         <p className="text-lg pt-2 w-full font-inter max-w-md text-[rgb(var(--background))] leading-relaxed">
                           "{work.subtitle}"

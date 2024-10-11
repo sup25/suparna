@@ -57,6 +57,7 @@ const config: Config = {
       fontFamily: {
         inter: "var(--font-inter)",
         dmSerifDisplay: "var(--font-dm-serif)",
+        marcellus: "var(--font-marcellus)",
       },
       borderRadius: {
         lg: "var(--radius)",

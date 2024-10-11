@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
+import { Inter, DM_Serif_Display, Marcellus } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -11,6 +11,12 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-marcellus",
 });
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -47,7 +53,7 @@ export default function RootLayout({
       <ThemeProvider>
         <TooltipProvider>
           <body
-            className={`${geistSans.variable} ${inter.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
+            className={`${geistSans.variable} ${inter.variable} ${marcellus.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
           >
             <Navbar />
             {children}
