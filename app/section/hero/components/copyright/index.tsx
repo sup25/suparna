@@ -11,7 +11,7 @@ const CopyRight = () => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className=" flex justify-center text-center mt-24 text-[rgb(var(--foreground))] items-center"
+      className=" flex justify-center text-center mt-10 text-[rgb(var(--foreground))] items-center"
     >
       <motion.span
         animate={{ rotateY: 360 }}
