@@ -7,6 +7,21 @@ export const workDetails = [
       "https://res.cloudinary.com/dmufwerzv/image/upload/v1728660257/phone_centrix_iamxhd.jpg",
     tags: ["Next.js", "B2C", "Ecommerce"],
     buttonText: "Explore Work",
+    about: {
+      images: [
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1728962396/photo-collage.png_zms0li.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1728639180/mobile1_u4sgpn.png",
+      ],
+      title: "Phone Centrix",
+      desc: "Phone Centrixis an e-commerce platform specializing in mobile phone covers. It offers a wide range of stylish and protective cases for various smartphone brands, focusing on quality, durability, and design. With a user-friendly interface and affordable pricing, Phone Centrix provides customers with the perfect blend of functionality and fashion for their mobile devices. ",
+      responsibility: [
+        "Built all website pages based on Figma designs, ensuring pixel-perfect implementation.",
+        "Integrated API endpoints from Swagger to display products and handle various e-commerce functionalities.",
+        "Developed product sorting features (price: A-Z, Z-A, high to low) and showcased recent, related, and most sold products.",
+        "Implemented pagination and search functionality for seamless product browsing.",
+        "Managed all core e-commerce features, including product filtering and dynamic content loading.",
+      ],
+    },
   },
   {
     title: "Battalion Tools",

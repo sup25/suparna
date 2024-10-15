@@ -7,20 +7,43 @@ import { Animate } from "@/app/animation";
 import { workDetails } from "./workDetails";
 import PopUPWorkDetails from "@/app/components/popupWorkDetails";
 
+interface WorkAbout {
+  images: string[];
+  title: string;
+  desc: string;
+  responsibility: string;
+}
+
+interface WorkDetail {
+  title: string;
+  type: string;
+  subtitle: string;
+  image: string;
+  tags: string[];
+  buttonText: string;
+  about: WorkAbout;
+}
+
 const Works = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const handleShowPopup = () => {
+  const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
+
+  const handleShowPopup = (work) => {
+    setSelectedWork(work);
     setShowPopup(true);
   };
 
   const handleClosePopup = () => {
     setShowPopup(false);
+    setSelectedWork(null);
   };
 
   return (
     <div className="section">
       <div className="container">
-        {showPopup && <PopUPWorkDetails closePopUp={handleClosePopup} />}
+        {showPopup && selectedWork && (
+          <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
+        )}
         <Animate.FadeDown className="py-16 relative overflow-hidden">
           <div className="relative mx-auto px-4 z-10">
             {workDetails.map((work, index) => (
@@ -44,7 +67,7 @@ const Works = () => {
                     </div>
 
                     <div className="space-y-4 flex flex-col justify-between h-full md:py-5 py-0">
-                      <div className=" ">
+                      <div className="">
                         <h1 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
                           <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-semibold">
@@ -67,12 +90,10 @@ const Works = () => {
                         </div>
                       </div>
 
-                      {/* Tags */}
-
                       {/* Button */}
                       <div className="w-full">
                         <button
-                          onClick={handleShowPopup}
+                          onClick={() => handleShowPopup(work)} // Pass the work object to the handler
                           className="relative font-inter group w-full max-w-[400px] inline-flex items-center justify-between text-[rgb(var(--background))] font-semibold py-2 px-4 rounded-full text-lg border-2 border-[rgb(var(--background))] overflow-hidden"
                         >
                           <span className="z-10">{work.buttonText}</span>
