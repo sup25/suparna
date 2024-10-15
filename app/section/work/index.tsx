@@ -7,28 +7,27 @@ import { Animate } from "@/app/animation";
 import { workDetails } from "./workDetails";
 import PopUPWorkDetails from "@/app/components/popupWorkDetails";
 
-interface WorkAbout {
-  images: string[];
-  title: string;
-  desc: string;
-  responsibility: string;
-}
-
 interface WorkDetail {
   title: string;
   type: string;
   subtitle: string;
   image: string;
   tags: string[];
+  about: {
+    title: string;
+    desc: string;
+    images: string[];
+    responsibility: string[];
+  };
   buttonText: string;
-  about: WorkAbout;
 }
 
 const Works = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
 
-  const handleShowPopup = (work) => {
+  const handleShowPopup = (work: WorkDetail) => {
+    // Explicitly typed work
     setSelectedWork(work);
     setShowPopup(true);
   };
@@ -93,7 +92,7 @@ const Works = () => {
                       {/* Button */}
                       <div className="w-full">
                         <button
-                          onClick={() => handleShowPopup(work)} // Pass the work object to the handler
+                          onClick={() => handleShowPopup(work)}
                           className="relative font-inter group w-full max-w-[400px] inline-flex items-center justify-between text-[rgb(var(--background))] font-semibold py-2 px-4 rounded-full text-lg border-2 border-[rgb(var(--background))] overflow-hidden"
                         >
                           <span className="z-10">{work.buttonText}</span>

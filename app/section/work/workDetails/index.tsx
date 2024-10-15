@@ -31,6 +31,12 @@ export const workDetails = [
       "https://res.cloudinary.com/dmufwerzv/image/upload/v1728639499/heat1_vc7ndm.png",
     tags: ["Shopify", "B2B", "B2C", "Ecommerce"],
     buttonText: "Explore Work",
+    about: {
+      images: [],
+      title: "",
+      desc: "",
+      responsibility: [],
+    },
   },
   {
     title: "Battalion Tools",
@@ -40,6 +46,12 @@ export const workDetails = [
       "https://res.cloudinary.com/dmufwerzv/image/upload/v1728639180/mobile1_u4sgpn.png",
     tags: ["React Native", "Cross-Platform"],
     buttonText: "Explore Work",
+    about: {
+      images: [],
+      title: "",
+      desc: "",
+      responsibility: [],
+    },
   },
   {
     title: "Cramers Uniform",
@@ -49,6 +61,12 @@ export const workDetails = [
       "https://res.cloudinary.com/dmufwerzv/image/upload/v1728641594/cramers_zqgibr.png",
     tags: ["Shopify", "B2C", "Ecommerce"],
     buttonText: "Explore Work",
+    about: {
+      images: [],
+      title: "",
+      desc: "",
+      responsibility: [],
+    },
   },
   {
     title: "Battalion Admin",
@@ -58,5 +76,11 @@ export const workDetails = [
       "https://res.cloudinary.com/dmufwerzv/image/upload/v1728656978/admin_jjfbrx.png",
     tags: ["Next.js", "Admin", "Dashboard"],
     buttonText: "Explore Work",
+    about: {
+      images: [],
+      title: "",
+      desc: "",
+      responsibility: [],
+    },
   },
 ];
