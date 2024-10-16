@@ -9,8 +9,12 @@ export const workDetails = [
     buttonText: "Explore Work",
     about: {
       images: [
-        "https://res.cloudinary.com/dmufwerzv/image/upload/v1728962396/photo-collage.png_zms0li.png",
-        "https://res.cloudinary.com/dmufwerzv/image/upload/v1728639180/mobile1_u4sgpn.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729046356/one_nfsmtz.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729046986/two_z9r07l.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729047483/five_rlq2el.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729046872/three_ttuvkz.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729047120/four_jzgv80.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729048072/six_lq0lxk.png",
       ],
       title: "Phone Centrix",
       desc: "Phone Centrixis an e-commerce platform specializing in mobile phone covers. It offers a wide range of stylish and protective cases for various smartphone brands, focusing on quality, durability, and design. With a user-friendly interface and affordable pricing, Phone Centrix provides customers with the perfect blend of functionality and fashion for their mobile devices. ",
