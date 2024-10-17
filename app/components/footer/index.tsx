@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaRegCopyright } from "react-icons/fa";
 
-const CopyRight = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -29,4 +29,4 @@ const CopyRight = () => {
   );
 };
 
-export default CopyRight;
+export default Footer;
