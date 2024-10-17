@@ -65,9 +65,20 @@ export const workDetails = [
         "https://res.cloudinary.com/dmufwerzv/image/upload/v1729148609/mock4_phmawe.png",
       ],
       title: "",
-      desc: "",
-      keyfeatures: [],
-      responsibility: [],
+      desc: "Battalion mobile app is designed to streamline tool management for professionals in construction and maintenance. By leveraging advanced mobile solutions, the app enables users to efficiently track, manage, and organize their tools both on-site and in the shop. Featuring a user-friendly interface built with React Native, the app supports cross-platform functionality, ensuring accessibility for all users.",
+      keyfeatures: [
+        "Real-time Tool Monitoring: Users can keep track of their tools’ status and locations.",
+        "Custom Configuration: The app allows for personalized settings tailored to individual user needs.",
+        " Seamless Integration: Works in tandem with smart toolbox products to enhance productivity.",
+      ],
+      responsibility: [
+        "Developed the user interface for all screens in accordance with the Figma prototypes.",
+        "Combined phone number and email authentication as part of the app's authorization features",
+        "Developed a structured Firestore database for effective tool management.",
+        "Created data models for combined serial numbers and device IDs.",
+        "Integrated user management features for real-time data updates.",
+        "Ensured scalability and responsiveness through Firebase Firestore integration.",
+      ],
     },
   },
   {

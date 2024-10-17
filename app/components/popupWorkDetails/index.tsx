@@ -65,7 +65,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
         <div className="absolute inset-x-0 bottom-4 flex justify-center space-x-4">
           <motion.button
             onClick={prevImage}
-            className="bg-gray-500 p-2 rounded-full text-white hover:bg-gray-600 transition-all"
+            className="bg-gray-400 p-2 rounded-full text-white hover:bg-gray-600 transition-all"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -73,7 +73,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
           </motion.button>
           <motion.button
             onClick={nextImage}
-            className="bg-gray-500 p-2 rounded-full text-white hover:bg-gray-600 transition-all"
+            className="bg-gray-400 p-2 rounded-full text-white hover:bg-gray-600 transition-all"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
