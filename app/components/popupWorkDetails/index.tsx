@@ -49,16 +49,16 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
 
   const sectionContent = {
     gallery: (
-      <div className="relative h-full flex items-center justify-center bg-black">
+      <div className="relative h-full w-full bg-black flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentImageIndex}
             src={work.about.images[currentImageIndex]}
             alt={`Project image ${currentImageIndex + 1}`}
-            className="max-w-full max-h-full object-contain py-1"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            className="max-w-full max-h-full object-contain"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           />
         </AnimatePresence>
@@ -114,7 +114,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
         exit={{ opacity: 0, y: -20 }}
         className="h-full overflow-y-auto p-6"
       >
-        <h3 className="text-2xl font-bold font-inter mb-4   text-[rgb(var(--background))]">
+        <h3 className="text-2xl font-bold font-inter mb-4 text-[rgb(var(--background))]">
           My Contributions
         </h3>
         <ul className="space-y-4">
