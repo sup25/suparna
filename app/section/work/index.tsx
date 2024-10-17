@@ -17,6 +17,7 @@ interface WorkDetail {
     title: string;
     desc: string;
     images: string[];
+    keyfeatures: string[];
     responsibility: string[];
   };
   buttonText: string;
