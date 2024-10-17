@@ -58,7 +58,12 @@ export const workDetails = [
     tags: ["React Native", "Cross-Platform"],
     buttonText: "Explore Work",
     about: {
-      images: [],
+      images: [
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729148102/mock1_qmno4c.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729148030/mock2_qgmcue.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729149078/mock3_jid5sb.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729148609/mock4_phmawe.png",
+      ],
       title: "",
       desc: "",
       keyfeatures: [],
