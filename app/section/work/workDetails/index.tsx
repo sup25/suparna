@@ -92,6 +92,9 @@ export const workDetails = [
     about: {
       images: [
         "https://res.cloudinary.com/dmufwerzv/image/upload/v1729092571/admin1_en1vt3.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729140048/admintwo_xwrkvl.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729140047/admin3_cbqlpo.png",
+        "https://res.cloudinary.com/dmufwerzv/image/upload/v1729140051/admin4_jlkery.png",
       ],
       title: "",
       desc: "The Battalion Admin Panel, built using Next.js, is a robust management interface designed to oversee devices and users for the Battalion tool platform. This admin panel is central to maintaining and controlling key functionalities of the Battalion ecosystem, which provides secure tools and solutions for device management and optimization.",
@@ -106,7 +109,12 @@ export const workDetails = [
         "Notifications: Receive real-time alerts for key actions and system events.",
         "Scalability: Efficiently manage increasing numbers of users and devices as the platform grows.",
       ],
-      responsibility: [],
+      responsibility: [
+        "Design Implementation: I meticulously translated the design from Figma into a fully functional interface, ensuring that all visual elements adhered closely to the original specifications.",
+        "Functionality Development: I developed all essential functionalities of the admin panel, enabling seamless management of users and devices.",
+        "Custom Resizable Table: I implemented a custom resizable table feature that mimics spreadsheet functionality, allowing users to adjust column widths dynamically for a more tailored data presentation.",
+        "User Experience Optimization: I ensured that the interface is intuitive and responsive, providing a smooth experience across various device types.",
+      ],
     },
   },
 ];
