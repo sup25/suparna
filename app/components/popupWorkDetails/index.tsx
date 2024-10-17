@@ -144,7 +144,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
     >
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-[rgb(var(--foreground))] rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden"
+        className="bg-[rgb(var(--foreground))] rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
