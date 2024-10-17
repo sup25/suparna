@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Camera,
+  Briefcase,
+  List,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Props {
@@ -10,27 +17,29 @@ interface Props {
       title: string;
       desc: string;
       images: string[];
+      keyfeatures: string[];
       responsibility: string[];
     };
+    link?: string;
   };
 }
 
 const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
+  const [currentSection, setCurrentSection] = useState<
+    "gallery" | "features" | "contribution"
+  >("gallery");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  /**
-   * Set the current image index to the next one, wrapping around to the first
-   * one if we go past the last one.
-   */
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % work.about.images.length);
   };
-
-  /**
-   * Set the current image index to the previous one, wrapping around to the
-   * last image if we go below the first one.
-   */
 
   const prevImage = () => {
     setCurrentImageIndex(
@@ -38,119 +47,174 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
     );
   };
 
+  const sectionContent = {
+    gallery: (
+      <div className="relative h-full flex items-center justify-center bg-black">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentImageIndex}
+            src={work.about.images[currentImageIndex]}
+            alt={`Project image ${currentImageIndex + 1}`}
+            className="max-w-full max-h-full object-contain py-1"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5 }}
+          />
+        </AnimatePresence>
+        <div className="absolute inset-x-0 bottom-4 flex justify-center space-x-4">
+          <motion.button
+            onClick={prevImage}
+            className="bg-gray-500 p-2 rounded-full text-white hover:bg-gray-600 transition-all"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <ChevronLeft size={24} />
+          </motion.button>
+          <motion.button
+            onClick={nextImage}
+            className="bg-gray-500 p-2 rounded-full text-white hover:bg-gray-600 transition-all"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <ChevronRight size={24} />
+          </motion.button>
+        </div>
+      </div>
+    ),
+    features: (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="h-full overflow-y-auto p-6"
+      >
+        <h3 className="text-2xl font-inter font-bold mb-4 text-[rgb(var(--background))]">
+          Key Features
+        </h3>
+        <ul className="space-y-4">
+          {work.about.keyfeatures.map((feature, index) => (
+            <motion.li
+              key={index}
+              className="bg-[#f5f5f5] font-inter text-black p-4 rounded-lg"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              {feature}
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+    ),
+    contribution: (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="h-full overflow-y-auto p-6"
+      >
+        <h3 className="text-2xl font-bold font-inter mb-4   text-[rgb(var(--background))]">
+          My Contributions
+        </h3>
+        <ul className="space-y-4">
+          {work.about.responsibility.map((task, index) => (
+            <motion.li
+              key={index}
+              className="bg-green-50 p-4 rounded-lg font-inter text-black"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              {task}
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+    ),
+  };
+
   return (
     <motion.div
-      className="fixed inset-0 z-[9999999] bg-black bg-opacity-75 flex items-center justify-center p-4"
       onClick={closePopUp}
+      className="fixed inset-0 z-[9999999] bg-black/80 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="bg-[rgb(var(--foreground))] text-[rgb(var(--background))] rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
+        className="bg-[rgb(var(--foreground))] rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="flex flex-col lg:flex-row h-full">
-          {/* Image Carousel */}
-          <div className="lg:w-1/2 relative">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImageIndex}
-                src={work.about.images[currentImageIndex]}
-                alt={`Project image ${currentImageIndex + 1}`}
-                className="w-full h-64 lg:h-full object-cover"
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-              />
-            </AnimatePresence>
-
-            <div className="absolute inset-0 " />
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-20 p-2 rounded-full text-white hover:bg-opacity-30 transition-all"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-20 p-2 rounded-full text-white hover:bg-opacity-30 transition-all"
-            >
-              <ChevronRight size={24} />
-            </button>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {work.about.images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentImageIndex
-                      ? "bg-white scale-125"
-                      : "bg-white bg-opacity-50"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:w-1/2 p-6 overflow-y-auto max-h-[90vh]">
-            <div className="flex justify-between items-center mb-4">
-              <motion.h2
-                className="text-4xl font-dmSerifDisplay font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-700"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
+        <div className="flex flex-col h-[80vh]">
+          {/* Header */}
+          <div className="bg-[rgb(var(--foreground))] p-6 text-[rgb(var(--background))]">
+            <div className="flex justify-between items-center">
+              <h2 className="text-3xl text-yellow-500 font-dmSerifDisplay font-bold">
                 {work.title}
-              </motion.h2>
+              </h2>
               <button
                 onClick={closePopUp}
-                className="text-[rgb(var(--background))]"
+                className="text-[rgb(var(--background))] hover:text-gray-500 rounded-full p-2 transition-colors"
               >
                 <X size={24} />
               </button>
             </div>
+            <p className="mt-2 font-inter text-[rgb(var(--background))]">
+              {work.about.desc}
+            </p>
+          </div>
 
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className="text-[rgb(var(--background))] font-inter leading-relaxed mb-6">
-                {work.about.desc}
-              </p>
-            </motion.div>
+          {/* Main Content */}
+          <div className="flex-grow relative overflow-hidden">
+            <AnimatePresence mode="wait" key={currentSection}>
+              {sectionContent[currentSection]}
+            </AnimatePresence>
+          </div>
 
-            <motion.h4
-              className="text-xl font-semibold font-inter text-[rgb(var(--background))] mb-3 mt-6"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              Core Tasks
-            </motion.h4>
-            <div className="space-y-3 mb-6">
-              <ul>
-                {work.about.responsibility.map((responsibility, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-start font-inter text-[rgb(var(--background))] bg-[rgb(var(--foreground))]  p-3 rounded-lg"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.5 }}
-                  >
-                    <span className="mr-2 text-[rgb(var(--background))] mt-1">
-                      •
-                    </span>
-                    <span>{responsibility}</span>
-                  </motion.li>
-                ))}
-              </ul>
+          {/* Footer Navigation */}
+          <div className="bg-[rgb(var(--foreground))] p-4 flex justify-between items-center">
+            <div className="flex space-x-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setCurrentSection("gallery")}
+                className={`p-2 rounded-lg flex items-center ${
+                  currentSection === "gallery"
+                    ? "bg-yellow-500 text-white"
+                    : "text-[rgb(var(--background))]"
+                }`}
+              >
+                <Camera size={20} className="mr-2 font-inter" /> Gallery
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setCurrentSection("features")}
+                className={`p-2 rounded-lg flex items-center ${
+                  currentSection === "features"
+                    ? "bg-yellow-500 text-white"
+                    : "text-[rgb(var(--background))]"
+                }`}
+              >
+                <List size={20} className="mr-2 font-inter" /> Features
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setCurrentSection("contribution")}
+                className={`p-2 rounded-lg flex items-center ${
+                  currentSection === "contribution"
+                    ? "bg-yellow-500 text-white"
+                    : "text-[rgb(var(--background))]"
+                }`}
+              >
+                <Briefcase size={20} className="mr-2 font-inter" />{" "}
+                Contributions
+              </motion.button>
             </div>
           </div>
         </div>
