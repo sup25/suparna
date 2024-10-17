@@ -9,12 +9,11 @@ const Hero = () => {
   return (
     <div className="section">
       <div className="container">
-        <section className="flex gap-10 flex-col justify-center items-center h-[90vh] overflow-hidden">
+        <section className="flex gap-10 flex-col justify-center items-center h-[70vh] overflow-hidden">
           <div className="flex flex-col justify-start gap-10">
             <TitleSlogan />
             <Description />
             <Connection />
-            <CopyRight />
           </div>
         </section>
       </div>
