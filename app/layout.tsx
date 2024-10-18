@@ -5,7 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "./context/themeProvider";
 import Navbar from "./components/navbar";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import metadata from "./metadata";
+import { metadata } from "./metadata";
 import Footer from "./components/footer";
 
 const inter = Inter({
