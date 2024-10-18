@@ -12,12 +12,12 @@ import {
 
 export const specialties = [
   {
-    name: "Shopify",
-    icon: <FaShopify className="text-[rgb(var(--background))] w-12 h-12" />, // w-8 = 30px, w-12 = 50px
-  },
-  {
     name: "React",
     icon: <SiReact className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "Shopify",
+    icon: <FaShopify className="text-[rgb(var(--background))] w-12 h-12" />, // w-8 = 30px, w-12 = 50px
   },
   {
     name: "Next.js",

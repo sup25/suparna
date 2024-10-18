@@ -1,24 +1,16 @@
 "use client";
-import React, { useState } from "react";
+
 import { motion } from "framer-motion";
-import Marquee from "react-fast-marquee";
 import { specialties } from "./specialties";
 
-const iconVariants = {
-  hover: { scale: 1.2, rotate: 5, transition: { duration: 0.3 } },
-};
-
-const SpecialtiesPage = () => {
-  const [pausedIndex, setPausedIndex] = useState<number | null>(null);
-
+const Specialties = () => {
   return (
-    <div className="h-[80vh] bg-[rgb(var(--background))] flex flex-col items-center justify-center p-6 space-y-12">
-      {/* Page Header */}
+    <div className="min-h-[90vh] bg-[rgb(var(--background))] text-white flex flex-col items-center justify-center ">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center max-w-2xl"
+        className="text-center max-w-2xl py-4"
       >
         <h1 className="text-5xl font-dmSerifDisplay font-bold text-[rgb(var(--foreground))] mb-4">
           My Specialties
@@ -29,44 +21,32 @@ const SpecialtiesPage = () => {
         </p>
       </motion.div>
 
-      {/* Marquee Layout for Icons */}
-      <div className="w-full overflow-hidden">
-        <Marquee gradient={false} speed={40} className="py-20">
+      <div className="w-full max-w-4xl flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-full md:w-1/2 grid md:grid-cols-4  grid-cols-3 gap-4"
+        >
           {specialties.map((specialty, index) => (
-            <div className="mx-6" key={index}>
-              <motion.div
-                variants={iconVariants}
-                whileHover="hover"
-                className="relative bg-[rgb(var(--foreground))] rounded-full shadow-lg flex justify-center items-center group cursor-pointer"
-                style={{ width: "120px", height: "120px" }}
-                onMouseEnter={() => setPausedIndex(index)}
-                onMouseLeave={() => setPausedIndex(null)}
-              >
-                <motion.div
-                  animate={{ rotate: pausedIndex === index ? 360 : 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full h-full flex items-center justify-center"
-                >
-                  {specialty.icon}
-                </motion.div>
-                {/* Tooltip */}
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: pausedIndex === index ? 1 : 0,
-                    y: pausedIndex === index ? 0 : 20,
-                  }}
-                  className="absolute bottom-full mb-4 px-4 py-2 text-sm bg-black text-white rounded-full whitespace-nowrap"
-                >
-                  {specialty.name}
-                </motion.span>
-              </motion.div>
-            </div>
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`cursor-pointer  
+                
+               rounded-xl bg-[rgb(var(--foreground))] text-[rgb(var(--background))] p-4 flex flex-col  items-center justify-center transition-all duration-300`}
+            >
+              <div className="text-3xl  mb-2">{specialty.icon}</div>
+              <div className="text-center font-medium font-inter text-[rgb(var(--background))] text-sm">
+                {specialty.name}
+              </div>
+            </motion.div>
           ))}
-        </Marquee>
+        </motion.div>
       </div>
     </div>
   );
 };
 
-export default SpecialtiesPage;
+export default Specialties;
