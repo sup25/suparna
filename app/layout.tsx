@@ -42,7 +42,10 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Suparna Adhikari | Full-Stack Developer & Innovator",
   description:
-    "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications. ",
+    "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
+  alternates: {
+    canonical: "https://suparna.com.np",
+  },
 };
 
 export default function RootLayout({
