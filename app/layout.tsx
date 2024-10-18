@@ -1,11 +1,11 @@
 import { Inter, DM_Serif_Display, Marcellus } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import { Metadata } from "next";
 import { ThemeProvider } from "./context/themeProvider";
 import Navbar from "./components/navbar";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { metadata } from "./metadata";
+
 import Footer from "./components/footer";
 
 const inter = Inter({
@@ -38,7 +38,15 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export { metadata };
+export const metadata: Metadata = {
+  metadataBase: new URL(`https://suparna.com.np`),
+  title: "Suparna Adhikari | Full-Stack Developer & Software Engineer",
+  description:
+    "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
+  alternates: {
+    canonical: "./",
+  },
+};
 
 export default function RootLayout({
   children,
