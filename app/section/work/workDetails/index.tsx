@@ -73,7 +73,7 @@ export const workDetails = [
     },
   },
   {
-    title: "Battalion Tools",
+    title: "Battalion App",
     type: "Mobile App Design",
     subtitle: "Efficient Tool Management with Advanced Mobile Solutions",
     image:
