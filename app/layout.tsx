@@ -40,9 +40,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Suparna Adhikari",
+  title: "Suparna Adhikari | Full Stack Developer",
   description:
-    "Full-stack developer skilled in HTML5, CSS3, JavaScript, Node.js, React.js, Next.js, and mobile application development. Dedicated to blending design and development to create intuitive, engaging, and accessible web and mobile experiences",
+    "Full-stack developer skilled in HTML5, CSS3, JavaScript, Node.js, React.js, Next.js, and mobile app development. Experienced in API design, database management, and Agile methodologies. Committed to creating intuitive, accessible web and mobile experiences.",
 };
 
 export default function RootLayout({
