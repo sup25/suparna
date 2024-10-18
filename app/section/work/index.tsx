@@ -45,7 +45,7 @@ const Works = () => {
         )}
         <Animate.FadeDown className="py-16 relative overflow-hidden">
           <div className="relative mx-auto px-4 z-10">
-            <h1 className=" text-center py-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold  text-[rgb(var(--foreground))]">
+            <h1 className=" text-center my-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold  text-[rgb(var(--foreground))]">
               Featured Works
             </h1>
             {workDetails.map((work, index) => (
