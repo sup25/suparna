@@ -52,8 +52,9 @@ const Contact: React.FC = () => {
           className="flex flex-col items-center gap-12"
           variants={itemVariants}
         >
-          <div className="relative">
+          <div className="relative flex items-center justify-center md:flex-nowrap flex-wrap gap-4">
             <ContactButton handleContact={handleContact} />
+            <PhoneDisplay />
             <AnimatedPaperPlane />
           </div>
         </motion.div>
@@ -67,30 +68,48 @@ interface ContactButtonProps {
 }
 
 const ContactButton = ({ handleContact }: ContactButtonProps) => (
-  <motion.button
-    className="bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={handleContact}
+  <div className="flex space-x-4 space-y-4 md:flex-nowrap flex-wrap">
+    <motion.button
+      className="bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={handleContact}
+    >
+      <span className="inline-flex font-inter items-center gap-3 text-xl">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M16 12v.01M12 12v.01M8 12v.01M21 16.95a8.982 8.982 0 01-3.14.705 9 9 0 111.682-10.717"
+          />
+        </svg>
+        Get In Touch
+      </span>
+    </motion.button>
+  </div>
+);
+
+const PhoneDisplay = () => (
+  <motion.div
+    className="flex items-center justify-center gap-3 bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.3 }}
   >
-    <span className="inline-flex font-inter items-center gap-3 text-xl">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M16 12v.01M12 12v.01M8 12v.01M21 16.95a8.982 8.982 0 01-3.14.705 9 9 0 111.682-10.717"
-        />
-      </svg>
-      Get In Touch
-    </span>
-  </motion.button>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg"
+      alt="Nepal Flag"
+      className="w-8 h-8"
+    />
+    <span className="text-xl font-inter  font-semibold">+9779861142179</span>
+  </motion.div>
 );
 
 const AnimatedPaperPlane = () => (
