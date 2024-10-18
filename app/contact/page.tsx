@@ -35,13 +35,13 @@ const Contact: React.FC = () => {
     >
       <div className="container relative mx-auto px-4 max-w-4xl">
         <motion.h2
-          className="text-6xl font-extrabold font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8"
+          className="md:text-6xl text-4xl font-extrabold font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8"
           variants={itemVariants}
         >
           Let&apos;s Connect!
         </motion.h2>
         <motion.p
-          className="text-2xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12"
+          className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12"
           variants={itemVariants}
         >
           I&apos;m always excited to collaborate on new projects and ideas.
@@ -70,12 +70,12 @@ interface ContactButtonProps {
 const ContactButton = ({ handleContact }: ContactButtonProps) => (
   <div className="flex space-x-4 space-y-4 md:flex-nowrap flex-wrap">
     <motion.button
-      className="bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
+      className="bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10  rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleContact}
     >
-      <span className="inline-flex font-inter items-center gap-3 text-xl">
+      <span className="inline-flex font-inter items-center gap-3 md:text-xl text-base">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-6 h-6"
@@ -108,7 +108,9 @@ const PhoneDisplay = () => (
       alt="Nepal Flag"
       className="w-8 h-8"
     />
-    <span className="text-xl font-inter  font-semibold">+9779861142179</span>
+    <span className="md:text-xl text-base font-inter  font-semibold">
+      +9779861142179
+    </span>
   </motion.div>
 );
 
