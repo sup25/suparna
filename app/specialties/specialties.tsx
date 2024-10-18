@@ -8,6 +8,7 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVisualstudiocode,
+  SiNodedotjs,
 } from "react-icons/si";
 
 export const specialties = [
@@ -22,6 +23,10 @@ export const specialties = [
   {
     name: "Next.js",
     icon: <SiNextdotjs className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "Node.js",
+    icon: <SiNodedotjs className="text-[rgb(var(--background))] w-12 h-12" />,
   },
   {
     name: "Prisma",
