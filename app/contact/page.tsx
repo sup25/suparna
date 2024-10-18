@@ -2,7 +2,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Contact: React.FC = () => {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "Contact | Suparna Adhikari | Full-Stack Developer & Software Engineer",
+  description:
+    "Get in touch with Suparna Adhikari, a full-stack developer and  Software Engineer",
+};
+
+const Contact = () => {
   const handleContact = () => {
     window.location.href = "mailto:asuparna25@gmail.com";
   };

@@ -2,6 +2,14 @@
 
 import { motion } from "framer-motion";
 import { specialties } from "./specialties";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "specialties | Suparna Adhikari | Full-Stack Developer & Software Engineer",
+  description:
+    "Delve into Suparna Adhikari's specialties, showcasing skills in front-end and back-end development",
+};
 
 const Specialties = () => {
   return (
