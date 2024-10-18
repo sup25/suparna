@@ -5,8 +5,9 @@ import "./globals.css";
 import { ThemeProvider } from "./context/themeProvider";
 import Navbar from "./components/navbar";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { metadata } from "./metadata";
+import { baseMetadata } from "./metadata";
 import Footer from "./components/footer";
+import { Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,7 +39,23 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export { metadata };
+export const generateMetadata = ({
+  params,
+}: {
+  params: { slug?: string };
+}): Metadata => {
+  const path = params.slug ? `/${params.slug}` : "/";
+  return {
+    ...baseMetadata,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: {
+      ...baseMetadata.openGraph,
+      url: `https://suparna.com.np${path}`,
+    },
+  };
+};
 
 export default function RootLayout({
   children,

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Suparna Adhikari | Full-Stack Developer & Innovator",
+export const baseMetadata: Metadata = {
+  title: {
+    default: "Suparna Adhikari | Full-Stack Developer & Innovator",
+    template: "%s | Suparna Adhikari",
+  },
   description:
     "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
   metadataBase: new URL("https://suparna.com.np"),
-  alternates: {
-    canonical: "/",
-  },
   authors: [{ name: "Suparna Adhikari" }],
   robots: {
     index: true,
@@ -34,7 +34,6 @@ export const metadata: Metadata = {
     title: "Suparna Adhikari | Full-Stack Developer & Innovator",
     description:
       "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
-    url: "https://suparna.com.np", // Base URL for Open Graph
     siteName: "Suparna Adhikari",
     locale: "en_US",
     type: "website",
