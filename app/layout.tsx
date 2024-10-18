@@ -1,4 +1,9 @@
-import { Inter, DM_Serif_Display, Marcellus } from "next/font/google";
+import {
+  Inter,
+  DM_Serif_Display,
+  Marcellus,
+  Bricolage_Grotesque,
+} from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -25,6 +30,11 @@ const dmSerifDisplay = DM_Serif_Display({
   weight: "400",
   variable: "--font-dm-serif",
 });
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bricolage",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -50,7 +60,7 @@ export default function RootLayout({
       <ThemeProvider>
         <TooltipProvider>
           <body
-            className={`${geistSans.variable} ${inter.variable} ${marcellus.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
+            className={`${geistSans.variable} ${inter.variable} ${marcellus.variable} ${bricolage.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
           >
             <Navbar />
             {children}

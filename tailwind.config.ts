@@ -58,6 +58,7 @@ const config: Config = {
         inter: "var(--font-inter)",
         dmSerifDisplay: "var(--font-dm-serif)",
         marcellus: "var(--font-marcellus)",
+        bricolage: "var(--font-bricolage)",
       },
       borderRadius: {
         lg: "var(--radius)",

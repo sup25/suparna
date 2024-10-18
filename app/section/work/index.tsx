@@ -44,10 +44,10 @@ const Works = () => {
           <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
         )}
         <Animate.FadeDown className="py-16 relative overflow-hidden">
+          <h1 className=" text-center pb-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold  text-[rgb(var(--foreground))]">
+            Featured Works
+          </h1>
           <div className="relative mx-auto px-4 z-10">
-            <h1 className=" text-center my-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold  text-[rgb(var(--foreground))]">
-              Featured Works
-            </h1>
             {workDetails.map((work, index) => (
               <Card
                 key={index}
@@ -70,9 +70,9 @@ const Works = () => {
 
                     <div className="space-y-4 flex flex-col justify-between h-full md:py-5 py-0">
                       <div className="">
-                        <h2 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
+                        <h2 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-medium text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
-                          <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-semibold">
+                          <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-medium">
                             {work.type}
                           </span>
                         </h2>
