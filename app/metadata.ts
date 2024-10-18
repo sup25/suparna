@@ -7,6 +7,7 @@ const metadata: Metadata = {
   alternates: {
     canonical: "https://suparna.com.np",
   },
+  authors: [{ name: "Suparna Adhikari" }],
   robots: {
     index: true,
     follow: true,
