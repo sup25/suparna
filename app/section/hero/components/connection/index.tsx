@@ -1,5 +1,5 @@
-import React from "react";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaLinkedinIn, FaGithub, FaFileDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Connection = () => {
@@ -13,6 +13,24 @@ const Connection = () => {
     hover: { rotate: 15, boxShadow: "0px 8px 15px var(--shadow-color)" },
   };
 
+  const tooltips = [
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/suparna-adhikari-b78b46176/",
+      icon: <FaLinkedinIn size={50} />,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/sup25",
+      icon: <FaGithub size={50} />,
+    },
+    {
+      name: "Resume",
+      url: "https://drive.google.com/file/d/1KHbgy7wSNzGwnfiHqVpCxWqZ4b1GWSME/view?usp=sharing",
+      icon: <FaFileDownload size={50} />,
+    },
+  ];
+
   return (
     <motion.div
       initial="hidden"
@@ -22,30 +40,32 @@ const Connection = () => {
       style={{ display: "flex", justifyContent: "start" }}
     >
       <div className="flex space-x-4 flex-wrap">
-        <motion.a
-          href="https://www.linkedin.com/in/suparna-adhikari-b78b46176/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 border border-[var(--border-color)] "
-          variants={iconVariants}
-          initial="initial"
-          whileHover="hover"
-          transition={{ duration: 0.3 }}
-        >
-          <FaLinkedinIn size={50} />
-        </motion.a>
-        <motion.a
-          href="https://github.com/sup25"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 border border-[var(--border-color)] "
-          variants={iconVariants}
-          initial="initial"
-          whileHover="hover"
-          transition={{ duration: 0.3 }}
-        >
-          <FaGithub size={50} />
-        </motion.a>
+        {tooltips.map((tooltip, index) => (
+          <motion.a
+            key={index}
+            href={tooltip.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 border border-[var(--border-color)] relative group"
+            variants={iconVariants}
+            initial="initial"
+            whileHover="hover"
+            transition={{ duration: 0.3 }}
+          >
+            {tooltip.icon}
+            <span
+              className="absolute opacity-0 group-hover:opacity-100 bg-[var(--bg-color)] text-[var(--text-color)] text-sm px-2 py-1 rounded transition-opacity duration-300"
+              style={{
+                bottom: "70px",
+                whiteSpace: "nowrap",
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+            >
+              {tooltip.name}
+            </span>
+          </motion.a>
+        ))}
       </div>
     </motion.div>
   );
