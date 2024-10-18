@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png" }],
   },
   openGraph: {
-    title: "Suparna Adhikari | Full-Stack Developer & Innovator",
+    title: "Suparna Adhikari | Full-Stack Developer & Software Engineer",
     description:
       "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
-    url: "https://suparna.com.np", // Base URL for Open Graph
+    url: "https://suparna.com.np",
     siteName: "Suparna Adhikari",
     locale: "en_US",
     type: "website",
