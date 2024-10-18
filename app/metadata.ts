@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Suparna Adhikari | Full-Stack Developer & Innovator",
+  metadataBase: new URL(`https://suparna.com.np`),
+  title: "Suparna Adhikari | Full-Stack Developer & Software Engineer",
   description:
     "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
-  metadataBase: new URL("https://suparna.com.np"),
   alternates: {
-    canonical: "/",
+    canonical: "./",
   },
   authors: [{ name: "Suparna Adhikari" }],
   robots: {
