@@ -28,7 +28,6 @@ const Works = () => {
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
 
   const handleShowPopup = (work: WorkDetail) => {
-    // Explicitly typed work
     setSelectedWork(work);
     setShowPopup(true);
   };
@@ -46,6 +45,9 @@ const Works = () => {
         )}
         <Animate.FadeDown className="py-16 relative overflow-hidden">
           <div className="relative mx-auto px-4 z-10">
+            <h1 className=" text-center py-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold  text-[rgb(var(--foreground))]">
+              Featured Works
+            </h1>
             {workDetails.map((work, index) => (
               <Card
                 key={index}
@@ -59,8 +61,8 @@ const Works = () => {
                         <Image
                           src={work.image}
                           alt={`${work.title} Interface`}
-                          layout="fill"
-                          objectFit="cover"
+                          fill
+                          style={{ objectFit: "cover" }}
                           className="brightness-105 contrast-105"
                         />
                       </div>
@@ -68,12 +70,12 @@ const Works = () => {
 
                     <div className="space-y-4 flex flex-col justify-between h-full md:py-5 py-0">
                       <div className="">
-                        <h1 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
+                        <h2 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-bold text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
                           <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-semibold">
                             {work.type}
                           </span>
-                        </h1>
+                        </h2>
                         <p className="text-lg pt-2 w-full font-inter max-w-md text-[rgb(var(--background))] leading-relaxed">
                           "{work.subtitle}"
                         </p>

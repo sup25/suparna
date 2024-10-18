@@ -14,7 +14,7 @@ const TitleSlogan = () => {
   return (
     <div className="w-full ">
       <motion.h1
-        className="md:text-6xl text-4xl font-dmSerifDisplay text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500"
+        className="md:text-6xl text-4xl font-dmSerifDisplay font-semibold "
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
