@@ -11,7 +11,7 @@ const Footer = () => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className=" flex justify-center text-center my-10 text-[rgb(var(--foreground))] items-center"
+      className=" flex justify-center text-center font-inter font-medium my-10 text-[rgb(var(--foreground))] items-center"
     >
       <motion.span
         animate={{ rotateY: 360 }}
