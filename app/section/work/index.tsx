@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Animate } from "@/app/animation";
 import { workDetails } from "./workDetails";
 import PopUPWorkDetails from "@/app/components/popupWorkDetails";
+import Pagination from "./pagination";
+import { WORKS_PER_PAGE } from "@/app/constants";
 
 interface WorkDetail {
   title: string;
@@ -26,6 +28,10 @@ interface WorkDetail {
 const Works = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const worksPerPage = WORKS_PER_PAGE;
+  const totalPages = Math.ceil(workDetails.length / worksPerPage);
 
   const handleShowPopup = (work: WorkDetail) => {
     setSelectedWork(work);
@@ -36,6 +42,12 @@ const Works = () => {
     setShowPopup(false);
     setSelectedWork(null);
   };
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+  const indexOfLastWork = currentPage * worksPerPage;
+  const indexOfFirstWork = indexOfLastWork - worksPerPage;
+  const currentWorks = workDetails.slice(indexOfFirstWork, indexOfLastWork);
 
   return (
     <div className="section">
@@ -48,7 +60,7 @@ const Works = () => {
             Featured Works
           </h1>
           <div className="relative mx-auto px-4 z-10">
-            {workDetails.map((work, index) => (
+            {currentWorks.map((work, index) => (
               <Card
                 key={index}
                 className="overflow-hidden bg-[rgb(var(--foreground))] rounded-xl transition-all mb-12"
@@ -108,6 +120,14 @@ const Works = () => {
                 </CardContent>
               </Card>
             ))}
+
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            )}
           </div>
         </Animate.FadeDown>
       </div>
