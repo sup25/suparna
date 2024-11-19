@@ -22,5 +22,13 @@ export const metadata: Metadata = {
     siteName: "Suparna Adhikari",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dmufwerzv/image/upload/v1732027708/suparna_js2fzt.png",
+        width: 1200,
+        height: 630,
+        alt: "Suparna Adhikari's Profile Preview Image",
+      },
+    ],
   },
 };
