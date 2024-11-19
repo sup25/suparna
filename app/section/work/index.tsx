@@ -76,6 +76,7 @@ const Works = () => {
                           fill
                           style={{ objectFit: "cover" }}
                           className="brightness-105 contrast-105"
+                          priority={true}
                         />
                       </div>
                     </div>

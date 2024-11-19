@@ -57,6 +57,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:image" content="/suparna.png" />
+      </head>
       <ThemeProvider>
         <TooltipProvider>
           <body

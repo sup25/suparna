@@ -22,13 +22,5 @@ export const metadata: Metadata = {
     siteName: "Suparna Adhikari",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/suparna.png",
-        width: 1200,
-        height: 630,
-        alt: "Suparna Adhikari's Profile Preview Image",
-      },
-    ],
   },
 };
