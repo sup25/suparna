@@ -15,6 +15,7 @@ const Navbar = () => {
     { id: "works", name: "works", href: "/works" },
     { id: "specialties", name: "specialties", href: "/specialties" },
     { id: "contact", name: "contact", href: "/contact" },
+    { id: "blogs", name: "blogs", href: "/blogs" },
   ];
 
   return (
@@ -31,7 +32,7 @@ const Navbar = () => {
             {Links.map((link) => (
               <Link
                 href={link.href}
-                className={`relative md:text-xl text-sm font-inter font-bold uppercase cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:scale-x-100 ${
+                className={`relative md:text-xl text-xs font-inter font-bold uppercase cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:scale-x-100 ${
                   pathname === link.href ? "after:scale-x-100" : ""
                 }`}
                 key={link.id}
