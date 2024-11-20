@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
   alternates: {
-    canonical: "https://suparna.com.np",
+    canonical: "./",
   },
   authors: [{ name: "Suparna Adhikari" }],
   robots: {
