@@ -24,7 +24,7 @@ const Navbar = () => {
         <nav
           className={`flex ${
             isDarkTheme
-              ? "bg-white text-black"
+              ? "bg-[rgb(var(--foreground))] text-black"
               : "bg-[rgb(var(--foreground))] text-white"
           } shadow px-4 py-2 w-fit justify-center rounded-full transition-colors duration-300`}
         >
