@@ -8,6 +8,7 @@ import { workDetails } from "./workDetails";
 import PopUPWorkDetails from "@/app/components/popupWorkDetails";
 import Pagination from "./pagination";
 import { WORKS_PER_PAGE } from "@/app/constants";
+import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 
 interface WorkDetail {
   title: string;
@@ -26,6 +27,10 @@ interface WorkDetail {
 }
 
 const Works = () => {
+  const { swipeHandlers, isMobile } = useSwipeableMobile({
+    pathLeft: "",
+    pathRight: "specialties",
+  });
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,7 +55,7 @@ const Works = () => {
   const currentWorks = workDetails.slice(indexOfFirstWork, indexOfLastWork);
 
   return (
-    <div className="section">
+    <div {...(isMobile ? swipeHandlers : {})} className="section">
       <div className="container">
         {showPopup && selectedWork && (
           <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />

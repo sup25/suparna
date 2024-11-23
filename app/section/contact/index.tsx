@@ -33,37 +33,38 @@ const Contact = () => {
 
   return (
     <motion.section
-      {...(isMobile ? swipeHandlers : {})}
       className="relative py-28  overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="container relative mx-auto px-4 max-w-4xl">
-        <motion.h1
-          className="md:text-6xl text-4xl font-semibold  font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8"
-          variants={itemVariants}
-        >
-          Let&apos;s Connect!
-        </motion.h1>
-        <motion.p
-          className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12"
-          variants={itemVariants}
-        >
-          I&apos;m always excited to collaborate on new projects and ideas.
-          Let&apos;s create something amazing together!
-        </motion.p>
+      <div {...(isMobile ? swipeHandlers : {})} className="section">
+        <div className="container relative mx-auto px-4 max-w-4xl">
+          <motion.h1
+            className="md:text-6xl text-4xl font-semibold  font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8"
+            variants={itemVariants}
+          >
+            Let&apos;s Connect!
+          </motion.h1>
+          <motion.p
+            className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12"
+            variants={itemVariants}
+          >
+            I&apos;m always excited to collaborate on new projects and ideas.
+            Let&apos;s create something amazing together!
+          </motion.p>
 
-        <motion.div
-          className="flex flex-col items-center gap-12"
-          variants={itemVariants}
-        >
-          <div className="relative flex items-center justify-center md:flex-nowrap flex-wrap gap-4">
-            <ContactButton handleContact={handleContact} />
-            <PhoneDisplay />
-            <AnimatedPaperPlane />
-          </div>
-        </motion.div>
+          <motion.div
+            className="flex flex-col items-center gap-12"
+            variants={itemVariants}
+          >
+            <div className="relative flex items-center justify-center md:flex-nowrap flex-wrap gap-4">
+              <ContactButton handleContact={handleContact} />
+              <PhoneDisplay />
+              <AnimatedPaperPlane />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );
