@@ -11,7 +11,7 @@ const Blogs = () => {
   return (
     <div {...(isMobile ? swipeHandlers : {})} className="section">
       <div className="container">
-        <div className="min-h-[75vh] bg-[rgb(var(--background))] text-white flex flex-col items-center justify-center">
+        <div className="min-h-[75vh]   flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
