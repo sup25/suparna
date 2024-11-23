@@ -15,6 +15,9 @@
   --border-color: rgb(100, 100, 100);
   --shadow-color: rgba(238, 231, 231, 0.396);
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   color: rgb(var(--foreground));
