@@ -2,10 +2,16 @@
 
 import { motion } from "framer-motion";
 import { specialties } from "./specialties";
+import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 
 const Specialties = () => {
+  const { swipeHandlers, isMobile } = useSwipeableMobile({
+    pathLeft: "/contact",
+    pathRight: "/works",
+  });
+
   return (
-    <div className="section">
+    <div {...(isMobile ? swipeHandlers : {})} className="section">
       <div className="container">
         <div className="min-h-[80vh]  bg-[rgb(var(--background))] text-white flex flex-col items-center justify-center ">
           <motion.div

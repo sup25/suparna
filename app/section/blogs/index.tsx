@@ -1,10 +1,15 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 
 const Blogs = () => {
+  const { swipeHandlers, isMobile } = useSwipeableMobile({
+    pathLeft: "",
+    pathRight: "/contact",
+  });
   return (
-    <div className="section">
+    <div {...(isMobile ? swipeHandlers : {})} className="section">
       <div className="container">
         <div className="min-h-[75vh] bg-[rgb(var(--background))] text-white flex flex-col items-center justify-center">
           <motion.div
