@@ -15,8 +15,19 @@
   --border-color: rgb(100, 100, 100);
   --shadow-color: rgba(238, 231, 231, 0.396);
 }
+/* Add this to your styles.css file or within your global styles */
+.swipeable-section {
+  transition: transform 0.3s ease; /* Smooth transition for swipe */
+}
+
+/* Optional: for the whole page scroll */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Enables smooth scrolling for the page */
+}
+
+/* Optional: Add styles to make swipe animation smoother */
+.container {
+  transition: transform 0.3s ease;
 }
 
 body {
