@@ -24,11 +24,9 @@ export const useSwipeableMobile = ({ pathLeft, pathRight }: Navigation) => {
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
-      console.log("Swiped left!");
       router.push(`/${pathLeft}`);
     },
     onSwipedRight: () => {
-      console.log("Swiped right!");
       router.push(`/${pathRight}`);
     },
     preventScrollOnSwipe: true,
