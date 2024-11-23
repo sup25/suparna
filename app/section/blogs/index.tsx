@@ -6,7 +6,7 @@ import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 const Blogs = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
     pathLeft: "",
-    pathRight: "/contact",
+    pathRight: "contact",
   });
   return (
     <div {...(isMobile ? swipeHandlers : {})} className="section">

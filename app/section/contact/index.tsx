@@ -1,8 +1,13 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 
 const Contact = () => {
+  const { swipeHandlers, isMobile } = useSwipeableMobile({
+    pathLeft: "blogs",
+    pathRight: "specialties",
+  });
   const handleContact = () => {
     window.location.href = "mailto:asuparna25@gmail.com";
   };
@@ -28,6 +33,7 @@ const Contact = () => {
 
   return (
     <motion.section
+      {...(isMobile ? swipeHandlers : {})}
       className="relative py-28  overflow-hidden"
       variants={containerVariants}
       initial="hidden"

@@ -6,8 +6,8 @@ import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 
 const Specialties = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
-    pathLeft: "/contact",
-    pathRight: "/works",
+    pathLeft: "contact",
+    pathRight: "works",
   });
 
   return (
