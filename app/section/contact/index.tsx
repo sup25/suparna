@@ -32,13 +32,13 @@ const Contact = () => {
   };
 
   return (
-    <motion.section
-      className="relative py-28  overflow-hidden"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <div {...(isMobile ? swipeHandlers : {})} className="section">
+    <div {...(isMobile ? swipeHandlers : {})} className="section">
+      <motion.section
+        className="relative py-28  overflow-hidden"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="container relative mx-auto px-4 max-w-4xl">
           <motion.h1
             className="md:text-6xl text-4xl font-semibold  font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8"
@@ -65,8 +65,8 @@ const Contact = () => {
             </div>
           </motion.div>
         </div>
-      </div>
-    </motion.section>
+      </motion.section>
+    </div>
   );
 };
 

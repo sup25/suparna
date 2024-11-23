@@ -28,8 +28,8 @@ interface WorkDetail {
 
 const Works = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
-    pathLeft: "",
-    pathRight: "specialties",
+    pathLeft: "specialties",
+    pathRight: "",
   });
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
