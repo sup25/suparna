@@ -166,7 +166,7 @@ const CustomLink = ({
 }) => (
   <a
     className={cn(
-      "text-[rgb(var(--foreground))] font-medium font-inter ",
+      "text-[rgb(var(--foreground))] font-bold font-inter ",
       className
     )}
     {...props}
