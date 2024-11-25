@@ -5,7 +5,7 @@ export const BlogLists = [
     slug: "esewa-remix",
     description: "A comprehensive guide to integrating eSewa into a Remix app.",
     readTime: "5 min read",
-    date: "March 2024",
+    date: "November 2024",
     category: ["Remix", "eSewa"],
   },
 ];

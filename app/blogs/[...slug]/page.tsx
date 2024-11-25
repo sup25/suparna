@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import EsewaRemixBlog from "@/app/(__blogs)/esewa-remix";
 import { useParams } from "next/navigation";
 
-export default function ExampleClientComponent() {
+export default function Page() {
   const params = useParams();
   const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 
