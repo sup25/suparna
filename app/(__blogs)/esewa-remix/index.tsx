@@ -1,5 +1,5 @@
 "use client";
-import EsewaRemix from "./esewa-remix.md";
+import EsewaRemix from "./esewa-remix.mdx";
 import { mdxComponents } from "../../components/MDXComponents";
 import { motion } from "framer-motion";
 const EsewaRemixBlog = () => {
