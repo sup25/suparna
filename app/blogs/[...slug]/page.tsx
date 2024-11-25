@@ -11,7 +11,7 @@ export default function Page() {
   console.log("Params:", slug);
 
   const blogComponents: Record<string, React.ReactNode> = {
-    "esewa-remix": <EsewaRemixBlog />,
+    "how-to-implement-esewa-payment-in-remix-app": <EsewaRemixBlog />,
   };
 
   return (
