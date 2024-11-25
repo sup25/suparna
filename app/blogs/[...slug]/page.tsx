@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import EsewaRemixBlog from "@/app/(__blogs)/esewa-remix";
 import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 
 export default function Page() {
   const params = useParams();
@@ -14,9 +15,11 @@ export default function Page() {
     "how-to-implement-esewa-payment-in-remix-app": <EsewaRemixBlog />,
   };
 
-  return (
-    <Suspense fallback={<p>Loading...</p>}>
-      {blogComponents[slug || ""] || <p>No blog found</p>}
-    </Suspense>
-  );
+  const selectedBlog = blogComponents[slug || ""];
+
+  if (!selectedBlog) {
+    notFound();
+  }
+
+  return <Suspense fallback={<p>Loading...</p>}>{selectedBlog}</Suspense>;
 }
