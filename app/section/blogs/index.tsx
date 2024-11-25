@@ -51,7 +51,7 @@ const Blogs = () => {
                     {blog.description}
                   </p>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-start justify-between md:flex-row flex-col gap-5">
                     <div className="flex items-center gap-4 text-sm text-[rgb(var(--foreground))]">
                       <span className="flex items-center  font-inter gap-1">
                         <Calendar className="w-4 h-4" />
