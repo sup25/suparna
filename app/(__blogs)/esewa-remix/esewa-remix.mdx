@@ -1,0 +1,171 @@
+# Implementing eSewa Payments in a Remix App
+
+Integrating eSewa, Nepal's popular digital wallet, into a web application can enhance payment convenience for users. This blog explains how to implement eSewa payments in a [Remix](https://remix.run/) application. I'll walk you through the critical components of the implementation and highlight key concepts like form handling, UUID generation, signature generation, and eSewa API integration.
+
+---
+
+## Table of Contents
+
+1. [Introduction to eSewa Payments](#introduction-to-esewa-payments)
+2. [Setting Up the Remix App](#setting-up-the-remix-app)
+3. [Creating the eSewa Payment Component](#creating-the-esewa-payment-component)
+4. [Handling UUID Generation](#handling-uuid-generation)
+5. [Calculating VAT for Payments](#calculating-vat-for-payments)
+6. [Signature Generation for Secure Transactions](#signature-generation-for-secure-transactions)
+7. [Creating Backend Actions](#creating-backend-actions)
+8. [Integrating eSewa Form Submission](#integrating-esewa-form-submission)
+9. [Debugging and Logging](#debugging-and-logging)
+10. [Important Code Snippets](#important-code-snippets)
+
+---
+
+## <span id="introduction-to-esewa-payments">1. Introduction to eSewa Payments</span>
+
+eSewa is a widely-used payment gateway in Nepal. Integrating it into a web application involves securely signing transactions and redirecting users to the eSewa payment page.
+
+---
+
+## <span id="setting-up-the-remix-app">2. Setting Up the Remix App </span>
+
+> Start by creating a Remix project:
+
+```bash
+ npx create-remix@latest esewa-integration
+ cd esewa-integration
+ npm install
+```
+
+Make sure you have your development environment set up with Node.js and necessary dependencies.
+
+---
+
+## 3.<span id="creating-the-esewa-payment-component"> Creating the eSewa Payment Component </span>
+
+The `EsewaPayment` React component handles the eSewa payment workflow. Here's an overview of its responsibilities:
+
+- Displaying the payment button.
+- Collecting payment details.
+- Submitting a form to the backend for signature generation.
+
+Key props include:
+
+- `amount`: The payment amount.
+- `productName`: The name of the product.
+- `productCode`: An optional product code.
+
+---
+
+## 4.<span id="handling-uuid-generation"> Handling UUID Generation </span>
+
+Each transaction needs a unique identifier. The `uuid` package generates this UUID:
+
+```javascript
+import { v4 as uuidv4 } from "uuid";
+
+const generateNewTransactionUUID = () => {
+  return uuidv4();
+};
+```
+
+This ensures every transaction is traceable.
+
+---
+
+## 5.<span id="calculating-vat-for-payments"> Calculating VAT for Payments </span>
+
+VAT is calculated at 13%. Here's how it's implemented:
+
+```javascript
+const taxAmount = Math.round(amount * 0.13);
+const totalAmount = amount + taxAmount;
+```
+
+These values are passed to eSewa as part of the payment data.
+
+---
+
+## 6.<span id="signature-generation-for-secure-transactions"> Signature Generation for Secure Transactions</span>
+
+To secure transactions, a cryptographic signature is required. This is generated using `CryptoJS`:
+
+```javascript
+const dataString = `total_amount=${totalAmount},transaction_uuid=${transactionUuid},product_code=${productCode}`;
+const hash = CryptoJS.HmacSHA256(dataString, secret);
+const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+```
+
+The `action` function in Remix is responsible for signature generation.
+
+---
+
+## 7.<span id="creating-backend-actions"> Creating Backend Actions </span>
+
+The Remix `action` handles form submissions for signature generation:
+
+```javascript
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  // Extract form data and generate signature
+  return json({ signature, debug: { dataString, inputValues } });
+};
+```
+
+---
+
+## 8.<span id="integrating-esewa-form-submission"> Integrating eSewa Form Submission </span>
+
+A hidden form submits the transaction details to eSewa's API:
+
+```javascript
+<form id="esewaForm" action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST" target="_blank">
+  <input type="hidden" name="amount" value={amount.toString()} />
+  <!-- Other inputs -->
+</form>
+```
+
+This ensures a seamless user experience.
+
+---
+
+## 9.<span id="debbugging-and-logging"> Debugging and Logging </span>
+
+Extensive logging helps debug issues, especially during signature generation and form submissions:
+
+```javascript
+console.log("Debug Info:", fetcher.data.debug);
+console.log("eSewa Form Data:", Object.fromEntries(formData.entries()));
+```
+
+---
+
+## 10.<span id="important-code-snippets"> Important Code Snippets </span>
+
+### Component for Payment Button
+
+```javascript
+<button
+  type="submit"
+  className="w-full cursor-pointer flex flex-col items-center 
+  border border-green-200 hover:border-green-300 transition-colors 
+  bg-green-50 text-black py-2 px-4 rounded-lg"
+>
+  <img
+    src="/esewa.svg"
+    alt="Esewa"
+    className="mr-2 w-[150px] h-auto text-white"
+  />
+  <span className="text-black my-2 font-bold">
+    (रु {totalAmount.toLocaleString("en-NP")}) with 13% VAT
+  </span>
+</button>
+```
+
+---
+
+With these steps, you can integrate eSewa payments into your Remix application. For complete code, check out the source files in this project.
+
+---
+
+## Conclusion
+
+Integrating eSewa enhances payment options for Nepali users. By following this guide, you can implement secure and efficient payments in your Remix app. If you found this helpful, share your thoughts in the comments!
