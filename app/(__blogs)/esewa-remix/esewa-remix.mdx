@@ -46,12 +46,17 @@ This code demonstrates how to integrate eSewa payment gateway into a React-based
 
 ---
 
-```tsx
+Imports
+
+```
 import { useEffect, useState, FormEvent } from "react";
 import { useFetcher } from "@remix-run/react";
 import { v4 as uuidv4 } from "uuid";
+```
 
-// Define the structure of the fetcher data.
+Define the structure of the fetcher data.
+
+```
 interface FetcherData {
   signature?: string; // Signature for transaction validation
   error?: string; // Error message (if any)
@@ -65,15 +70,21 @@ interface FetcherData {
     };
   };
 }
+```
 
-// Props for the EsewaPayment component.
+Props for the EsewaPayment component.
+
+```
 interface EsewaPaymentProps {
   amount: number; // Base amount for the product/service
   productName: string; // Product or service name
   productCode?: string; // Default to "EPAYTEST" for testing
 }
+```
 
-// Main eSewa Payment Component
+Main eSewa Payment Component
+
+```
 export default function EsewaPayment({
   amount,
   productName,
@@ -126,37 +137,50 @@ export default function EsewaPayment({
     // Submit data to the server to get the signature
     fetcher.submit(formData, { method: "post", action: "/esewa" });
   };
+```
 
-  // Effect to update the signature when fetcher data changes
-  useEffect(() => {
-    if (fetcher.data?.signature) {
-      console.log("Received Signature:", fetcher.data.signature);
-      console.log("Debug Info:", fetcher.data.debug);
-      setSignature(fetcher.data.signature);
-      setIsSignatureReady(true);
-    } else if (fetcher.data?.error) {
-      console.error("Signature generation failed:", fetcher.data.error);
-    }
-  }, [fetcher.data]);
+Effect to update the signature when fetcher data changes
 
-  // Automatically submit the eSewa form when the signature is ready
-  useEffect(() => {
-    if (isSignatureReady) {
-      const esewaForm = document.getElementById("esewaForm") as HTMLFormElement;
-      if (esewaForm) {
-        const formData = new FormData(esewaForm);
-        console.log("eSewa Form Data:", Object.fromEntries(formData.entries()));
-        esewaForm.submit();
-      }
-      setIsSignatureReady(false);
-    }
-  }, [isSignatureReady]);
-
-  // Prevent rendering until baseUrl is set
-  if (!baseUrl) {
-    return null;
+```
+useEffect(() => {
+  if (fetcher.data?.signature) {
+    console.log("Received Signature:", fetcher.data.signature);
+    console.log("Debug Info:", fetcher.data.debug);
+    setSignature(fetcher.data.signature);
+    setIsSignatureReady(true);
+  } else if (fetcher.data?.error) {
+    console.error("Signature generation failed:", fetcher.data.error);
   }
+}, [fetcher.data]);
+```
 
+Automatically submit the eSewa form when the signature is ready
+
+```
+useEffect(() => {
+ if (isSignatureReady) {
+   const esewaForm = document.getElementById("esewaForm") as HTMLFormElement;
+   if (esewaForm) {
+     const formData = new FormData(esewaForm);
+     console.log("eSewa Form Data:", Object.fromEntries(formData.entries()));
+     esewaForm.submit();
+   }
+   setIsSignatureReady(false);
+ }
+}, [isSignatureReady]);
+```
+
+Prevent rendering until baseUrl is set
+
+```
+if (!baseUrl) {
+ return null;
+}
+```
+
+Return the components of the eSewa form
+
+```
   return (
     <div className="space-y-4">
       {/* Form to generate signature */}
@@ -244,6 +268,8 @@ export default function EsewaPayment({
 ```
 
 ---
+
+> Please note that all of these are in the same file.
 
 ### Key Notes:
 
@@ -387,4 +413,4 @@ export default function Page() {
 
 ## Conclusion
 
-By combining the `EsewaPayment` component on the frontend and the backend signature generation logic, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the backend ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
+By combining the `EsewaPayment` component on the frontend and the backend signature generation logic `esewa.tsx (route)`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the backend ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
