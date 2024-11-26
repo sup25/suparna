@@ -24,7 +24,6 @@ export default function MarkdownPage() {
             }}
             className="rounded-xl shadow-sm ring-1 ring-gray-900/5 p-6 sm:p-8"
           >
-            {/* Markdown content with ToC */}
             <ReactMarkdown
               className="markdown-content"
               components={components}
