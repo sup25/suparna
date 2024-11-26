@@ -48,7 +48,7 @@ export const components: Components = {
   ),
   blockquote: ({ node, ...props }) => (
     <blockquote
-      className="font-inter border-[#FFD700] border-l-4  pl-6 py-4 my-6 bg-blue-50 dark:bg-blue-900/20 italic text-gray-700 dark:text-gray-300 rounded-r-xl"
+      className="font-inter border-[#FFD700] border-l-4  pl-6 py-4 my-6 bg-blue-50  italic text-black  rounded-r-xl"
       {...props}
     />
   ),
