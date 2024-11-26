@@ -1,3 +1,4 @@
+export const esewaRemix = `
 # Implementing eSewa Payments in a Remix App
 
 Integrating eSewa, Nepal's popular digital wallet, into a web application can enhance payment convenience for users. This blog explains how to implement eSewa payments in a [Remix](https://remix.run/) application. I'll walk you through the critical components of the implementation and highlight key concepts like form handling, UUID generation, signature generation, and eSewa API integration.
@@ -6,41 +7,38 @@ Integrating eSewa, Nepal's popular digital wallet, into a web application can en
 
 ## Table of Contents
 
-1. [Introduction to eSewa Payments](#introduction-to-esewa-payments)
-2. [Setting Up the Remix App](#setting-up-the-remix-app)
-3. [Creating the eSewa Payment Component](#creating-the-esewa-payment-component)
-4. [Esewa Signature Generation](#esewa-Signature-Generation)
+
 
 ---
 
-## <span id="introduction-to-esewa-payments">1. Introduction to eSewa Payments</span>
+## Introduction to eSewa Payments 
 
 eSewa is a widely-used payment gateway in Nepal. Integrating it into a web application involves securely signing transactions and redirecting users to the eSewa payment page.
 
 ---
 
-## <span id="setting-up-the-remix-app">2. Setting Up the Remix App </span>
+## Setting Up the Remix App
 
 > Start by creating a Remix project:
 
-```bash
+\`\`\`javascript
  npx create-remix@latest (your project name)
  cd (your project)
  npm run dev (run your project)
-```
+\`\`\`
 
 ### Folder Structure
 
 - **app/components**
-  - `EsewaPayment` (Frontend component)
+  - \`\`\`EsewaPayment\`\`\` (Frontend component)
 - **app/routes**
-  - `esewa.tsx` (Backend component)
+  - \`\`\`esewa.tsx\`\`\` (Backend component)
 
 > **Note:** Ensure your development environment is set up with Node.js and all necessary dependencies installed.
 
 ---
 
-## 3.<span id="creating-the-esewa-payment-component"> Creating the eSewa Payment Component (Front end) </span>
+## Creating the eSewa Payment Component (Front end)
 
 This code demonstrates how to integrate eSewa payment gateway into a React-based application using [Remix](https://remix.run/) fetcher API.:
 
@@ -48,15 +46,15 @@ This code demonstrates how to integrate eSewa payment gateway into a React-based
 
 Imports
 
-```
+\`\`\`javascript
 import { useEffect, useState, FormEvent } from "react";
 import { useFetcher } from "@remix-run/react";
 import { v4 as uuidv4 } from "uuid";
-```
+\`\`\`
 
 Define the structure of the fetcher data.
 
-```
+\`\`\`javascript
 interface FetcherData {
   signature?: string; // Signature for transaction validation
   error?: string; // Error message (if any)
@@ -70,21 +68,21 @@ interface FetcherData {
     };
   };
 }
-```
+\`\`\`
 
 Props for the EsewaPayment component.
 
-```
+\`\`\`javascript
 interface EsewaPaymentProps {
   amount: number; // Base amount for the product/service
   productName: string; // Product or service name
   productCode?: string; // Default to "EPAYTEST" for testing
 }
-```
+\`\`\`
 
-Main eSewa Payment Component
+Main body of the EsewaPayment
 
-```
+\`\`\`javascript
 export default function EsewaPayment({
   amount,
   productName,
@@ -137,11 +135,11 @@ export default function EsewaPayment({
     // Submit data to the server to get the signature
     fetcher.submit(formData, { method: "post", action: "/esewa" });
   };
-```
+\`\`\`
 
 Effect to update the signature when fetcher data changes
 
-```
+\`\`\`javascript
 useEffect(() => {
   if (fetcher.data?.signature) {
     console.log("Received Signature:", fetcher.data.signature);
@@ -152,11 +150,11 @@ useEffect(() => {
     console.error("Signature generation failed:", fetcher.data.error);
   }
 }, [fetcher.data]);
-```
+\`\`\`
 
 Automatically submit the eSewa form when the signature is ready
 
-```
+\`\`\`javascript
 useEffect(() => {
  if (isSignatureReady) {
    const esewaForm = document.getElementById("esewaForm") as HTMLFormElement;
@@ -168,22 +166,22 @@ useEffect(() => {
    setIsSignatureReady(false);
  }
 }, [isSignatureReady]);
-```
+\`\`\`
 
 Prevent rendering until baseUrl is set
 
-```
+\`\`\`javascript
 if (!baseUrl) {
  return null;
 }
-```
+\`\`\`
 
 Return the components of the eSewa form
 
-```
+\`\`\`javascript
   return (
     <div className="space-y-4">
-      {/* Form to generate signature */}
+
       <form onSubmit={handleSubmit} method="post" className="space-y-4">
         <input type="hidden" name="transaction_uuid" value={transactionUUID} />
         <input type="hidden" name="amount" value={amount.toString()} />
@@ -199,12 +197,12 @@ Return the components of the eSewa form
         <input
           type="hidden"
           name="success_url"
-          value={`${baseUrl}/payment-success`} //your route for payment success
+          value={\`$yourbaseUrl/payment-success\`} //your route for payment success use 
         />
         <input
           type="hidden"
           name="failure_url"
-          value={`${baseUrl}/payment-failure`} // your route for payment failure
+          value={\`$yourbaseUrl/payment-failure\`} // your route for payment failure
         />
         <input
           type="hidden"
@@ -227,7 +225,7 @@ Return the components of the eSewa form
         </button>
       </form>
 
-      {/* eSewa Redirection Form */}
+     
       <form
         id="esewaForm"
         action="https://rc-epay.esewa.com.np/api/epay/main/v2/form"
@@ -248,12 +246,12 @@ Return the components of the eSewa form
         <input
           type="hidden"
           name="success_url"
-          value={`${baseUrl}/payment-success`}
+          value={\`$yourbaseUrl/payment-success\`}
         />
         <input
           type="hidden"
           name="failure_url"
-          value={`${baseUrl}/payment-failure`}
+          value={\`$yourbaseUrl/payment-failure\`}
         />
         <input
           type="hidden"
@@ -265,9 +263,8 @@ Return the components of the eSewa form
     </div>
   );
 }
-```
+\`\`\`
 
----
 
 > Please note that all of these are in the same file.
 
@@ -275,7 +272,7 @@ Return the components of the eSewa form
 
 1. **UUID Generation**:
 
-   - The `uuidv4` library is used to generate a unique identifier for each transaction to ensure no collisions.
+   - The \`uuidv4\` library is used to generate a unique identifier for each transaction to ensure no collisions.
 
 2. **VAT Calculation**:
 
@@ -292,7 +289,7 @@ Return the components of the eSewa form
 
 5. **Environment Specificity**:
 
-   - The base URL dynamically adapts based on the deployment environment using `window.location.origin`.
+   - The base URL dynamically adapts based on the deployment environment using \`\`\`window.location.origin\`\`\`.
 
 6. **Debugging and Logging**:
    - Console logs provide detailed information during the process to simplify debugging.
@@ -301,16 +298,16 @@ Return the components of the eSewa form
 
 ### Recommendations:
 
-- Replace the `secret` field with a secure environment variable to avoid exposing it in the client-side code.
+- Replace the \`secret\` field with a secure environment variable to avoid exposing it in the client-side code.
 - Validate form inputs and handle errors gracefully to improve user experience.
 
 > The implementation is based on the official documentation available on the [eSewa Epay integration](https://developer.esewa.com.np/pages/Epay#integration).
 
 ---
 
-## 4.<span id="esewa-Signature-Generation"> Esewa Signature Generation (Backend route) </span>
+## Esewa Signature Generation (Backend route) 
 
-```tsx
+\`\`\`javascript
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import CryptoJS from "crypto-js";
 
@@ -376,25 +373,25 @@ import CryptoJS from "crypto-js";
 export default function Page() {
   return null;
 }
-```
+\`\`\`
 
 ### Note
 
 > This file serves exclusively as an API route, designed to handle backend logic rather than render a user interface.\
-> As such, the default export (Page) returns null, ensuring no unnecessary UI is rendered.
+ As such, the default export (Page) returns null, ensuring no unnecessary UI is rendered.
 
-### Key Notes
+### Key Notes:
 
 1. **Action Function**
 
-   - Handles form submission via `POST` requests and generates a signature for secure eSewa payments.
-   - Extracts required fields from the `FormData` object.
+   - Handles form submission via \`POST\` requests and generates a signature for secure eSewa payments.
+   - Extracts required fields from the \`FormData\` object.
    - Ensures all fields are validated for type and presence before processing.
 
 2. **Signature Generation**
 
    - Constructs a string with key-value pairs of the payment data.
-   - Utilizes `CryptoJS` to generate an HMAC SHA256 hash.
+   - Utilizes \`CryptoJS\` to generate an HMAC SHA256 hash.
    - Encodes the hash in Base64 format before returning it to the frontend.
 
 3. **Error Handling**
@@ -404,13 +401,15 @@ export default function Page() {
 
 ---
 
-> **Integration Note:**\
+> **Integration Note:**
+>
 > When the frontend (EsewaPayment component) and backend (esewa.tsx API route) are combined, the flow works seamlessly to handle eSewa\
-> payments.The frontend sends transaction data to the backend, which generates a secure signature using the provided secret key.\
-> This signature is then returned to the frontend, enabling the submission of the payment form to eSewa's payment gateway with all necessary validation.
+payments.The frontend sends transaction data to the backend, which generates a secure signature using the provided secret key.\
+This signature is then returned to the frontend, enabling the submission of the payment form to eSewa's payment gateway with all necessary validation.
 
 ---
 
 ## Conclusion
 
-By combining the `EsewaPayment` component on the frontend and the backend signature generation logic `esewa.tsx (route)`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the backend ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
+By combining the \`EsewaPayment\` component on the frontend and the backend signature generation logic \`esewa.tsx (route)\`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the backend ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
+`;
