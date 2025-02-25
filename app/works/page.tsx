@@ -1,7 +1,8 @@
 import React from "react";
-import Works from "../section/work";
 
 import type { Metadata } from "next";
+
+import Works from "../section/work/Works";
 
 export const metadata: Metadata = {
   title: "Works | Suparna Adhikari | Full-Stack Developer & Software Engineer",
