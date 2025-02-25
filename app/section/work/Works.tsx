@@ -8,6 +8,7 @@ import { WorkDetail } from "./types";
 import { useFetchWorks } from "./hooks/useFetchWorks";
 import { usePagination } from "./hooks/usePagination";
 import WorkSection from "./workSection";
+import { Loading } from "@/app/components/loading";
 
 const Works = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
@@ -16,7 +17,7 @@ const Works = () => {
   });
   const [works, setWorks] = useState<WorkDetail[]>([]);
 
-  useFetchWorks(setWorks);
+  const isLoading = useFetchWorks(setWorks);
 
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
@@ -34,6 +35,13 @@ const Works = () => {
     nonFreelanceWorks,
     WORKS_PER_PAGE
   );
+
+  if (isLoading)
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loading />
+      </div>
+    );
 
   const handleShowPopup = (work: WorkDetail) => {
     setSelectedWork(work);

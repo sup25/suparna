@@ -9,6 +9,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Loading } from "../loading";
 
 interface Props {
   closePopUp: () => void;
@@ -62,11 +63,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
       <div className="relative w-full h-full bg-gray-900 flex items-center justify-center p-3 md:p-6">
         <AnimatePresence mode="wait">
           <div className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center">
-            {!imageLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 md:w-12 md:h-12 border-2 border-[rgb(255,215,0)] border-t-transparent rounded-full animate-spin" />
-              </div>
-            )}
+            {!imageLoaded && <Loading />}
             <motion.img
               key={currentImageIndex}
               src={work.about.images[currentImageIndex]}
