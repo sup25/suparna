@@ -15,7 +15,7 @@ const TitleSlogan = () => {
   return (
     <div className="w-full ">
       <h1 className=" md:text-5xl text-4xl  font-semibold font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8">
-        Let&apos;s Connect!
+        Suparna Adhikari
       </h1>
 
       <div className="mt-4 md:text-2xl text-xl text-[rgb(var(--foreground))] flex items-center ">
