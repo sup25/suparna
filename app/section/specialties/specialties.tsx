@@ -1,5 +1,5 @@
 // components/SpecialtyIcons.tsx
-import { FaShopify, FaGitAlt, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { FaShopify, FaGitAlt, FaHtml5, FaCss3Alt, FaAws } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiReact,
@@ -9,6 +9,10 @@ import {
   SiTypescript,
   SiVisualstudiocode,
   SiNodedotjs,
+  SiWordpress,
+  SiRemix,
+  SiDocker,
+  SiAwselasticloadbalancing,
 } from "react-icons/si";
 
 export const specialties = [
@@ -27,6 +31,22 @@ export const specialties = [
   {
     name: "Node.js",
     icon: <SiNodedotjs className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "Remix",
+    icon: <SiRemix className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "WordPress",
+    icon: <SiWordpress className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "Docker",
+    icon: <SiDocker className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "Aws",
+    icon: <FaAws className="text-[rgb(var(--background))] w-12 h-12" />,
   },
   {
     name: "Prisma",
