@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { GiBridge, GiHanger } from "react-icons/gi";
-import { useTheme } from "@/app/context/themeProvider";
-import { Animate } from "@/app/animation";
 import { GitBranch } from "lucide-react";
 const TitleSlogan = () => {
   const [isClient, setIsClient] = useState(false);
