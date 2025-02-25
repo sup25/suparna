@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Animate } from "@/app/animation";
 import PopUPWorkDetails from "@/app/components/popupWorkDetails";
 import { WORKS_PER_PAGE } from "@/app/constants";
@@ -17,6 +17,9 @@ const Works = () => {
   });
   const [works, setWorks] = useState<WorkDetail[]>([]);
 
+  const professionalSectionRef = useRef<HTMLDivElement>(null);
+  const freelanceSectionRef = useRef<HTMLDivElement>(null);
+
   const isLoading = useFetchWorks(setWorks);
 
   const [showPopup, setShowPopup] = useState(false);
@@ -30,11 +33,33 @@ const Works = () => {
   );
 
   const freelancePagination = usePagination(freelanceWorks, WORKS_PER_PAGE);
-
   const nonFreelancePagination = usePagination(
     nonFreelanceWorks,
     WORKS_PER_PAGE
   );
+
+  // Scroll to the specific section
+  const scrollToProfessionalSection = () => {
+    if (professionalSectionRef.current) {
+      professionalSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToFreelanceSection = () => {
+    if (freelanceSectionRef.current) {
+      freelanceSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNonFreelancePageChange = (page: number) => {
+    nonFreelancePagination.setCurrentPage(page);
+    scrollToProfessionalSection(); // Scroll to Professional Works
+  };
+
+  const handleFreelancePageChange = (page: number) => {
+    freelancePagination.setCurrentPage(page);
+    scrollToFreelanceSection(); // Scroll to Freelance Works
+  };
 
   if (isLoading)
     return (
@@ -62,24 +87,28 @@ const Works = () => {
         <Animate.FadeDown className="py-16 relative overflow-hidden">
           <div className="relative mx-auto px-4 z-10">
             {nonFreelanceWorks.length > 0 && (
-              <WorkSection
-                works={nonFreelancePagination.currentItems}
-                title="Professional Works"
-                currentPage={nonFreelancePagination.currentPage}
-                totalPages={nonFreelancePagination.totalPages}
-                onPageChange={nonFreelancePagination.setCurrentPage}
-                onShowPopup={handleShowPopup}
-              />
+              <div ref={professionalSectionRef}>
+                <WorkSection
+                  works={nonFreelancePagination.currentItems}
+                  title="Professional Works"
+                  currentPage={nonFreelancePagination.currentPage}
+                  totalPages={nonFreelancePagination.totalPages}
+                  onPageChange={handleNonFreelancePageChange}
+                  onShowPopup={handleShowPopup}
+                />
+              </div>
             )}
             {freelanceWorks.length > 0 && (
-              <WorkSection
-                works={freelancePagination.currentItems}
-                title="Freelance Works"
-                currentPage={freelancePagination.currentPage}
-                totalPages={freelancePagination.totalPages}
-                onPageChange={freelancePagination.setCurrentPage}
-                onShowPopup={handleShowPopup}
-              />
+              <div ref={freelanceSectionRef}>
+                <WorkSection
+                  works={freelancePagination.currentItems}
+                  title="Freelance Works"
+                  currentPage={freelancePagination.currentPage}
+                  totalPages={freelancePagination.totalPages}
+                  onPageChange={handleFreelancePageChange}
+                  onShowPopup={handleShowPopup}
+                />
+              </div>
             )}
           </div>
         </Animate.FadeDown>
