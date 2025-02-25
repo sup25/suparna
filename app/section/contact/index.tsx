@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
+import { Animate } from "@/app/animation";
 
 const Contact = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
@@ -39,32 +40,23 @@ const Contact = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="container relative mx-auto px-4 max-w-4xl">
-          <motion.h1
-            className="md:text-6xl text-4xl font-semibold  font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8"
-            variants={itemVariants}
-          >
+        <Animate.FadeDown className="container relative mx-auto px-4 max-w-4xl">
+          <div className="md:text-5xl text-4xl font-semibold  font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8">
             Let&apos;s Connect!
-          </motion.h1>
-          <motion.p
-            className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12"
-            variants={itemVariants}
-          >
+          </div>
+          <p className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12">
             I&apos;m always excited to collaborate on new projects and ideas.
             Let&apos;s create something amazing together!
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-col items-center gap-12"
-            variants={itemVariants}
-          >
+          <div className="flex flex-col items-center gap-12">
             <div className="relative flex items-center justify-center md:flex-nowrap flex-wrap gap-4">
               <ContactButton handleContact={handleContact} />
               <PhoneDisplay />
               <AnimatedPaperPlane />
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </Animate.FadeDown>
       </motion.section>
     </div>
   );
@@ -76,10 +68,8 @@ interface ContactButtonProps {
 
 const ContactButton = ({ handleContact }: ContactButtonProps) => (
   <div className="flex space-x-4 space-y-4 md:flex-nowrap flex-wrap">
-    <motion.button
-      className="bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10  rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+    <button
+      className="bg-[rgb(var(--foreground))] hover:scale-105 text-[rgb(var(--background))] font-semibold py-4 px-10  rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
       onClick={handleContact}
     >
       <span className="inline-flex font-inter items-center gap-3 md:text-xl text-base">
@@ -99,19 +89,14 @@ const ContactButton = ({ handleContact }: ContactButtonProps) => (
         </svg>
         Get In Touch
       </span>
-    </motion.button>
+    </button>
   </div>
 );
 
 const PhoneDisplay = () => (
-  <motion.a
+  <a
     href="tel:+9779861142179"
-    className="flex items-center justify-center gap-3 bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer no-underline"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.3 }}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
+    className="flex items-center hover:scale-105 justify-center gap-3 bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer no-underline"
   >
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg"
@@ -121,7 +106,7 @@ const PhoneDisplay = () => (
     <span className="md:text-xl text-base font-inter font-semibold">
       +9779861142179
     </span>
-  </motion.a>
+  </a>
 );
 
 const AnimatedPaperPlane = () => (

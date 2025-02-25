@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaLinkedinIn, FaGithub, FaFileDownload } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FileUser } from "lucide-react";
 
 const Connection = () => {
   const variants = {
@@ -27,7 +28,7 @@ const Connection = () => {
     {
       name: "Resume",
       url: "https://drive.google.com/file/d/1KHbgy7wSNzGwnfiHqVpCxWqZ4b1GWSME/view?usp=sharing",
-      icon: <FaFileDownload size={50} />,
+      icon: <FileUser size={50} />,
     },
   ];
 
@@ -46,7 +47,7 @@ const Connection = () => {
             href={tooltip.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 border border-[var(--border-color)] relative group"
+            className="p-2 border border-[var(--border-color)] text-[rgb(var(--foreground))] relative group"
             variants={iconVariants}
             initial="initial"
             whileHover="hover"
