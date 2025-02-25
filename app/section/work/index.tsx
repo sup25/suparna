@@ -26,12 +26,16 @@ interface WorkDetail {
   };
   buttonText: string;
 }
-
-// Define API base URL based on environment
-const API_BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://quick-orelle-suparna-d194a811.koyeb.app"
-    : "http://localhost:8000"; // Adjust this to your local backend port
+const apiClient = axios.create({
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8000/api/v1"
+      : "https://quick-orelle-suparna-d194a811.koyeb.app/api/v1",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
+});
 
 const Works = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
@@ -43,8 +47,8 @@ const Works = () => {
   useEffect(() => {
     const fetchTestFromDb = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/v1/work`, {
-          withCredentials: true, // Include credentials for CORS with credentials: true
+        const response = await apiClient.get(`/work`, {
+          withCredentials: true,
         });
         const data = response.data;
         setTest(data);
