@@ -10,6 +10,7 @@ import Pagination from "./pagination";
 import { WORKS_PER_PAGE } from "@/app/constants";
 import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 import axios from "axios";
+
 interface WorkDetail {
   title: string;
   type: string;
@@ -26,6 +27,12 @@ interface WorkDetail {
   buttonText: string;
 }
 
+// Define API base URL based on environment
+const API_BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://quick-orelle-suparna-d194a811.koyeb.app"
+    : "http://localhost:8000"; // Adjust this to your local backend port
+
 const Works = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
     pathLeft: "specialties",
@@ -35,12 +42,16 @@ const Works = () => {
 
   useEffect(() => {
     const fetchTestFromDb = async () => {
-      const response = await axios.get(
-        "https://quick-orelle-suparna-d194a811.koyeb.app/api/v1/work"
-      );
-      const data = await response.data;
-      setTest(data);
-      console.log("data", data);
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/v1/work`, {
+          withCredentials: true, // Include credentials for CORS with credentials: true
+        });
+        const data = response.data;
+        setTest(data);
+        console.log("Fetched data:", data);
+      } catch (error) {
+        console.error("Error fetching works:", error);
+      }
     };
     fetchTestFromDb();
   }, []);
@@ -75,7 +86,7 @@ const Works = () => {
           <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
         )}
         <Animate.FadeDown className="py-16 relative overflow-hidden">
-          <h1 className=" text-center pb-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold  text-[rgb(var(--foreground))]">
+          <h1 className="text-center pb-5 font-dmSerifDisplay text-4xl md:text-6xl font-semibold text-[rgb(var(--foreground))]">
             Featured Works
           </h1>
           <div className="relative mx-auto px-4 z-10">
@@ -104,7 +115,7 @@ const Works = () => {
                       <div className="">
                         <h2 className="text-4xl flex flex-col gap-2 md:text-6xl font-dmSerifDisplay font-medium text-[rgb(var(--background))] mb-2">
                           {work.title}{" "}
-                          <span className="text-[#FFD700] text-3xl md:text-5xl  font-marcellus font-medium">
+                          <span className="text-[#FFD700] text-3xl md:text-5xl font-marcellus font-medium">
                             {work.type}
                           </span>
                         </h2>
