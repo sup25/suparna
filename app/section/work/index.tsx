@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import PopUPWorkDetails from "@/app/components/popupWorkDetails";
 import Pagination from "./pagination";
 import { WORKS_PER_PAGE } from "@/app/constants";
 import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
-
+import axios from "axios";
 interface WorkDetail {
   title: string;
   type: string;
@@ -31,6 +31,20 @@ const Works = () => {
     pathLeft: "specialties",
     pathRight: "",
   });
+  const [test, setTest] = useState([]);
+
+  useEffect(() => {
+    const fetchTestFromDb = async () => {
+      const response = await axios.get(
+        "https://quick-orelle-suparna-d194a811.koyeb.app/api/v1/work"
+      );
+      const data = await response.data;
+      setTest(data);
+      console.log("data", data);
+    };
+    fetchTestFromDb();
+  }, []);
+
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
