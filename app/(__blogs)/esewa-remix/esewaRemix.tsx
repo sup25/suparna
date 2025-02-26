@@ -32,7 +32,7 @@ eSewa is a widely-used payment gateway in Nepal. Integrating it into a web appli
 - **app/components**
   - \`\`\`EsewaPayment\`\`\` (Frontend component)
 - **app/routes**
-  - \`\`\`esewa.tsx\`\`\` (Backend component)
+  - \`\`\`esewa.tsx\`\`\` (route component)
 
 > **Note:** Ensure your development environment is set up with Node.js and all necessary dependencies installed.
 
