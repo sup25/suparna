@@ -376,7 +376,7 @@ export default function Page() {
 
 ### Note
 
-> This file serves exclusively as an API route, designed to handle backend logic rather than render a user interface.\
+> This file serves exclusively as an API route, designed to handle signature generation logic rather than render a user interface.\
  As such, the default export (Page) returns null, ensuring no unnecessary UI is rendered.
 
 ### Key Notes:
@@ -404,5 +404,5 @@ export default function Page() {
 
 ## Conclusion
 
-By combining the \`EsewaPayment\` component on the frontend and the backend signature generation logic \`esewa.tsx (route)\`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the route ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
+By combining the \`EsewaPayment\` component on the frontend and the API route for signature generation logic \`esewa.tsx (route)\`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the route ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
 `;
