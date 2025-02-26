@@ -24,39 +24,19 @@ const Works = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
 
-  const professionalSectionRef = useRef<HTMLDivElement>(null);
-  const freelanceSectionRef = useRef<HTMLDivElement>(null);
+  const worksSectionRef = useRef<HTMLDivElement>(null);
 
-  const freelanceWorks = works.filter((work) =>
-    work.tags.some((tag) => tag.toLowerCase() === "freelance")
-  );
-  const nonFreelanceWorks = works.filter(
-    (work) => !work.tags.some((tag) => tag.toLowerCase() === "freelance")
-  );
+  const pagination = usePagination(works, WORKS_PER_PAGE);
 
-  const freelancePagination = usePagination(freelanceWorks, WORKS_PER_PAGE);
-  const nonFreelancePagination = usePagination(
-    nonFreelanceWorks,
-    WORKS_PER_PAGE
-  );
-
-  // Smoothly scroll to the specific section
-  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
-    if (ref.current) {
-      setTimeout(() => {
-        ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
-    }
+  const scrollToTop = () => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
   };
 
-  const handleNonFreelancePageChange = (page: number) => {
-    nonFreelancePagination.setCurrentPage(page);
-    scrollToSection(professionalSectionRef);
-  };
-
-  const handleFreelancePageChange = (page: number) => {
-    freelancePagination.setCurrentPage(page);
-    scrollToSection(freelanceSectionRef);
+  const handlePageChange = (page: number) => {
+    pagination.setCurrentPage(page);
+    scrollToTop();
   };
 
   if (isLoading)
@@ -85,32 +65,19 @@ const Works = () => {
         {showPopup && selectedWork && (
           <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
         )}
-        <Animate.FadeDown className=" relative">
-          <div className="relative mx-auto px-4 z-10">
-            {nonFreelanceWorks.length > 0 && (
-              <div ref={professionalSectionRef} className="pt-20 ">
-                <WorkSection
-                  works={nonFreelancePagination.currentItems}
-                  title="Professional Works"
-                  currentPage={nonFreelancePagination.currentPage}
-                  totalPages={nonFreelancePagination.totalPages}
-                  onPageChange={handleNonFreelancePageChange}
-                  onShowPopup={handleShowPopup}
-                />
-              </div>
-            )}
-            {freelanceWorks.length > 0 && (
-              <div ref={freelanceSectionRef} className="pt-20 ">
-                <WorkSection
-                  works={freelancePagination.currentItems}
-                  title="Freelance Works"
-                  currentPage={freelancePagination.currentPage}
-                  totalPages={freelancePagination.totalPages}
-                  onPageChange={handleFreelancePageChange}
-                  onShowPopup={handleShowPopup}
-                />
-              </div>
-            )}
+        <Animate.FadeDown className="relative">
+          <div
+            ref={worksSectionRef}
+            className="relative mx-auto px-4 z-10 pt-16"
+          >
+            <WorkSection
+              works={pagination.currentItems}
+              title="My Works"
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
+              onPageChange={handlePageChange}
+              onShowPopup={handleShowPopup}
+            />
           </div>
         </Animate.FadeDown>
       </div>
