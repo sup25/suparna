@@ -17,7 +17,7 @@ const Blogs = () => {
       <div className="container px-4 mx-auto">
         <div className="min-h-screen py-16 ">
           <Animate.FadeDown>
-            <h1 className="md:text-5xl text-4xl  font-semibold font-dmSerifDisplay  mb-8 text-[rgb(var(--foreground))]">
+            <h1 className="heading mb-8 text-[rgb(var(--foreground))]">
               Latest Blog Posts
             </h1>
             <div className="grid gap-6 ">

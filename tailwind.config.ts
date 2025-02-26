@@ -85,6 +85,20 @@ const config: Config = {
             padding: "0 30px",
           },
         },
+        ".heading": {
+          fontSize: "3rem",
+          lineHeight: "1",
+          fontWeight: "800",
+          fontFamily: "dmSerifDisplay",
+        },
+        "@media screen and (max-width: 768px)": {
+          ".heading": {
+            fontSize: "2.25rem",
+            lineHeight: "1",
+            fontWeight: "800",
+            fontFamily: "dmSerifDisplay",
+          },
+        },
       });
     },
     require("tailwindcss-animate"),

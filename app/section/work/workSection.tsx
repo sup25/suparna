@@ -23,7 +23,7 @@ const WorkSection: React.FC<WorkSectionProps> = ({
 }) => {
   return (
     <div className="mb-10">
-      <h2 className="md:text-5xl text-4xl  text-center font-dmSerifDisplay font-semibold text-[rgb(var(--foreground))] mb-8">
+      <h2 className="heading text-center  text-[rgb(var(--foreground))] mb-8">
         {title}
       </h2>
       {works.map((work, index) => (

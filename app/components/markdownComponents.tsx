@@ -4,7 +4,7 @@ import { Components } from "react-markdown";
 export const components: Components = {
   h1: ({ node, ...props }) => (
     <h1
-      className="text-4xl font-dmSerifDisplay font-bold text-[rgb(var(--foreground))] border-b border-gray-200 tracking-tight leading-tight pb-4 mb-6"
+      className="heading font-bold text-[rgb(var(--foreground))] border-b border-gray-200 tracking-tight leading-tight pb-4 mb-6"
       {...props}
     />
   ),
