@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Specialties from "../section/specialties";
+import Specialties from "../../section/specialties";
 
 export const metadata: Metadata = {
   title:
