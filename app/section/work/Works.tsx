@@ -17,15 +17,15 @@ const Works = () => {
     pathLeft: "specialties",
     pathRight: "",
   });
+
   const [works, setWorks] = useState<WorkDetail[]>([]);
-
-  const professionalSectionRef = useRef<HTMLDivElement>(null);
-  const freelanceSectionRef = useRef<HTMLDivElement>(null);
-
   const { isLoading, error } = useFetchWorks(setWorks);
 
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
+
+  const professionalSectionRef = useRef<HTMLDivElement>(null);
+  const freelanceSectionRef = useRef<HTMLDivElement>(null);
 
   const freelanceWorks = works.filter((work) =>
     work.tags.some((tag) => tag.toLowerCase() === "freelance")
@@ -40,55 +40,23 @@ const Works = () => {
     WORKS_PER_PAGE
   );
 
-  // Scroll to the specific section
-  const scrollToProfessionalSection = () => {
-    if (professionalSectionRef.current) {
-      const rect = professionalSectionRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY || window.pageYOffset;
-      const targetTop = rect.top + scrollTop;
-      console.log(
-        "Target Top Position:",
-        targetTop,
-        "Current Scroll:",
-        scrollTop
-      );
-
-      // Use window.scrollTo instead of scrollIntoView
-      window.scrollTo({ top: targetTop, behavior: "smooth" });
-      console.log("window.scrollTo attempted to:", targetTop);
-    } else {
-      console.log("Professional Section Ref is null");
-    }
-  };
-
-  const scrollToFreelanceSection = () => {
-    if (freelanceSectionRef.current) {
-      const rect = freelanceSectionRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY || window.pageYOffset;
-      const targetTop = rect.top + scrollTop;
-      console.log(
-        "Target Top Position:",
-        targetTop,
-        "Current Scroll:",
-        scrollTop
-      );
-
-      // Use window.scrollTo instead of scrollIntoView
-      window.scrollTo({ top: targetTop, behavior: "smooth" });
-      console.log("window.scrollTo attempted to:", targetTop);
-    } else {
-      console.log("Freelance Section Ref is null");
+  // Smoothly scroll to the specific section
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      setTimeout(() => {
+        ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
   };
 
   const handleNonFreelancePageChange = (page: number) => {
     nonFreelancePagination.setCurrentPage(page);
-    scrollToProfessionalSection(); // Scroll to Professional Works
+    scrollToSection(professionalSectionRef);
   };
 
   const handleFreelancePageChange = (page: number) => {
     freelancePagination.setCurrentPage(page);
-    scrollToFreelanceSection(); // Scroll to Freelance Works
+    scrollToSection(freelanceSectionRef);
   };
 
   if (isLoading)
@@ -97,12 +65,9 @@ const Works = () => {
         <Loading />
       </div>
     );
-  if (error) {
-    return <SomethingWentWrong />;
-  }
-  if (works.length === 0) {
-    return <NoWorkToShow />;
-  }
+
+  if (error) return <SomethingWentWrong />;
+  if (works.length === 0) return <NoWorkToShow />;
 
   const handleShowPopup = (work: WorkDetail) => {
     setSelectedWork(work);
@@ -120,10 +85,10 @@ const Works = () => {
         {showPopup && selectedWork && (
           <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
         )}
-        <Animate.FadeDown className="py-16 relative ">
+        <Animate.FadeDown className="py-16 relative">
           <div className="relative mx-auto px-4 z-10">
             {nonFreelanceWorks.length > 0 && (
-              <div ref={professionalSectionRef}>
+              <div ref={professionalSectionRef} className="pt-20">
                 <WorkSection
                   works={nonFreelancePagination.currentItems}
                   title="Professional Works"
@@ -135,7 +100,7 @@ const Works = () => {
               </div>
             )}
             {freelanceWorks.length > 0 && (
-              <div ref={freelanceSectionRef}>
+              <div ref={freelanceSectionRef} className="pt-20">
                 <WorkSection
                   works={freelancePagination.currentItems}
                   title="Freelance Works"
