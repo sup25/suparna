@@ -74,8 +74,7 @@ Props for the EsewaPayment component.
 
 \`\`\`javascript
 interface EsewaPaymentProps {
-  amount: number; // Base amount for the product/service
-  productName: string; // Product or service name
+  amount: number; // Base amount for the product/service  \
   productCode?: string; // Default to "EPAYTEST" for testing
 }
 \`\`\`
@@ -305,7 +304,7 @@ Return the components of the eSewa form
 
 ---
 
-## Esewa Signature Generation (Backend route) 
+## Esewa Signature Generation (inside route folder) 
 
 \`\`\`javascript
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
@@ -401,15 +400,9 @@ export default function Page() {
 
 ---
 
-> **Integration Note:**
->
-> When the frontend (EsewaPayment component) and backend (esewa.tsx API route) are combined, the flow works seamlessly to handle eSewa\
-payments.The frontend sends transaction data to the backend, which generates a secure signature using the provided secret key.\
-This signature is then returned to the frontend, enabling the submission of the payment form to eSewa's payment gateway with all necessary validation.
 
----
 
 ## Conclusion
 
-By combining the \`EsewaPayment\` component on the frontend and the backend signature generation logic \`esewa.tsx (route)\`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the backend ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
+By combining the \`EsewaPayment\` component on the frontend and the backend signature generation logic \`esewa.tsx (route)\`, you create a secure and seamless integration with the eSewa payment gateway. The frontend handles user interactions and collects necessary payment details, while the route ensures data integrity and security by generating a cryptographic signature. This approach not only adheres to best practices for secure payment processing but also offers a scalable foundation for implementing additional payment gateways or enhancements in the future.
 `;

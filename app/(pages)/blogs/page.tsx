@@ -1,6 +1,7 @@
 import React from "react";
-import Blogs from "../section/blogs";
+
 import { Metadata } from "next";
+import Blogs from "@/app/section/blogs";
 
 export const metadata: Metadata = {
   title: "Blogs | Suparna Adhikari | Full-Stack Developer & Software Engineer",
