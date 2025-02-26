@@ -11,7 +11,7 @@ const TitleSlogan = () => {
   if (!isClient) return null;
   return (
     <div className="w-full ">
-      <h1 className=" heading text-start text-[rgb(var(--foreground))] mb-8">
+      <h1 className=" heading font-dmSerifDisplay text-start text-[rgb(var(--foreground))] mb-8">
         Suparna Adhikari
       </h1>
 

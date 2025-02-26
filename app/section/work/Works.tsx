@@ -43,13 +43,41 @@ const Works = () => {
   // Scroll to the specific section
   const scrollToProfessionalSection = () => {
     if (professionalSectionRef.current) {
-      professionalSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      const rect = professionalSectionRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetTop = rect.top + scrollTop;
+      console.log(
+        "Target Top Position:",
+        targetTop,
+        "Current Scroll:",
+        scrollTop
+      );
+
+      // Use window.scrollTo instead of scrollIntoView
+      window.scrollTo({ top: targetTop, behavior: "smooth" });
+      console.log("window.scrollTo attempted to:", targetTop);
+    } else {
+      console.log("Professional Section Ref is null");
     }
   };
 
   const scrollToFreelanceSection = () => {
     if (freelanceSectionRef.current) {
-      freelanceSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      const rect = freelanceSectionRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetTop = rect.top + scrollTop;
+      console.log(
+        "Target Top Position:",
+        targetTop,
+        "Current Scroll:",
+        scrollTop
+      );
+
+      // Use window.scrollTo instead of scrollIntoView
+      window.scrollTo({ top: targetTop, behavior: "smooth" });
+      console.log("window.scrollTo attempted to:", targetTop);
+    } else {
+      console.log("Freelance Section Ref is null");
     }
   };
 
@@ -92,7 +120,7 @@ const Works = () => {
         {showPopup && selectedWork && (
           <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
         )}
-        <Animate.FadeDown className="py-16 relative overflow-hidden">
+        <Animate.FadeDown className="py-16 relative ">
           <div className="relative mx-auto px-4 z-10">
             {nonFreelanceWorks.length > 0 && (
               <div ref={professionalSectionRef}>

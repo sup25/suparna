@@ -41,7 +41,7 @@ const Contact = () => {
         animate="visible"
       >
         <Animate.FadeDown className="container relative mx-auto px-4 max-w-4xl">
-          <div className="heading text-center text-[rgb(var(--foreground))] mb-8">
+          <div className="heading font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8">
             Let&apos;s Connect!
           </div>
           <p className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12">

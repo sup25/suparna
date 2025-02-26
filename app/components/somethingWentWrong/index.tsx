@@ -6,7 +6,9 @@ export const SomethingWentWrong = () => {
     <div className="h-screen flex flex-col justify-center items-center ">
       <div className="text-center p-8 max-w-xl">
         <XCircle className="h-16 w-16 text-rose-500 mx-auto mb-4" />
-        <h1 className="heading  text-rose-500 mb-2">Something went wrong</h1>
+        <h1 className="heading font-dmSerifDisplay text-rose-500 mb-2">
+          Something went wrong
+        </h1>
         <p className="text-[rgb(var(--foreground))]  mb-6">
           We encountered an error while processing your request.
         </p>
