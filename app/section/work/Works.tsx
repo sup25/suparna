@@ -100,7 +100,7 @@ const Works = () => {
               </div>
             )}
             {freelanceWorks.length > 0 && (
-              <div ref={freelanceSectionRef} className="pt-20">
+              <div ref={freelanceSectionRef}>
                 <WorkSection
                   works={freelancePagination.currentItems}
                   title="Freelance Works"
