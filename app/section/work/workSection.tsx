@@ -22,8 +22,8 @@ const WorkSection: React.FC<WorkSectionProps> = ({
   onShowPopup,
 }) => {
   return (
-    <div className="mb-10">
-      <h2 className="heading  font-dmSerifDisplay text-center  text-[rgb(var(--foreground))] mb-8">
+    <div className="">
+      <h2 className="heading  font-dmSerifDisplay text-center  text-[rgb(var(--foreground))] mb-10">
         {title}
       </h2>
       {works.map((work, index) => (
