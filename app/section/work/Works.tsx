@@ -88,7 +88,7 @@ const Works = () => {
         <Animate.FadeDown className=" relative">
           <div className="relative mx-auto px-4 z-10">
             {nonFreelanceWorks.length > 0 && (
-              <div ref={professionalSectionRef} className="md:pt-20 pt-16">
+              <div ref={professionalSectionRef} className="pt-20 ">
                 <WorkSection
                   works={nonFreelancePagination.currentItems}
                   title="Professional Works"
@@ -100,7 +100,7 @@ const Works = () => {
               </div>
             )}
             {freelanceWorks.length > 0 && (
-              <div ref={freelanceSectionRef} className="md:pt-20 pt-16">
+              <div ref={freelanceSectionRef} className="pt-20">
                 <WorkSection
                   works={freelancePagination.currentItems}
                   title="Freelance Works"
