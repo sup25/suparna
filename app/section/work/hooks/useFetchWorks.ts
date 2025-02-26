@@ -6,18 +6,29 @@ export const useFetchWorks = (
   setWorks: React.Dispatch<React.SetStateAction<WorkDetail[]>>
 ) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchWorks = async () => {
       try {
         setIsLoading(true);
+        setError(null);
         const response = await apiClient.get(`/work`, {
           withCredentials: true,
         });
         const data = response.data.data;
         setWorks(data);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error fetching works:", error);
+        if (error.response?.status === 500) {
+          setError(
+            "Database is currently unavailable. Please try again later."
+          );
+        } else {
+          setError(
+            "Failed to fetch data. Please check your internet connection."
+          );
+        }
       } finally {
         setIsLoading(false);
       }
@@ -25,5 +36,5 @@ export const useFetchWorks = (
     fetchWorks();
   }, [setWorks]);
 
-  return isLoading;
+  return { isLoading, error };
 };

@@ -9,6 +9,8 @@ import { useFetchWorks } from "./hooks/useFetchWorks";
 import { usePagination } from "./hooks/usePagination";
 import WorkSection from "./workSection";
 import { Loading } from "@/app/components/loading";
+import NoWorkToShow from "@/app/components/noWork";
+import { SomethingWentWrong } from "@/app/components/somethingWentWrong";
 
 const Works = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
@@ -20,7 +22,7 @@ const Works = () => {
   const professionalSectionRef = useRef<HTMLDivElement>(null);
   const freelanceSectionRef = useRef<HTMLDivElement>(null);
 
-  const isLoading = useFetchWorks(setWorks);
+  const { isLoading, error } = useFetchWorks(setWorks);
 
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
@@ -67,6 +69,12 @@ const Works = () => {
         <Loading />
       </div>
     );
+  if (error) {
+    return <SomethingWentWrong />;
+  }
+  if (works.length === 0) {
+    return <NoWorkToShow />;
+  }
 
   const handleShowPopup = (work: WorkDetail) => {
     setSelectedWork(work);
