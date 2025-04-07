@@ -1,7 +1,8 @@
+import { TbLoader } from "react-icons/tb";
 export const Loading = () => {
   return (
-    <div className="flex items-center justify-center  inset-0 ">
-      <div className="w-8 h-8 md:w-12 md:h-12 border-2 border-[rgb(255,215,0)] border-t-transparent rounded-full animate-spin" />
+    <div className="flex items-center justify-center w-full inset-0 ">
+      <TbLoader size={50} className="animate-spin  text-[rgb(255,215,0)]" />
     </div>
   );
 };

@@ -19,7 +19,6 @@ export const useFetchWorks = (
         const data = response.data.data;
         setWorks(data);
       } catch (error: any) {
-        console.error("Error fetching works:", error);
         if (error.response?.status === 500) {
           setError(
             "Database is currently unavailable. Please try again later."

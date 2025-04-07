@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Pagination from "./pagination";
 import WorkCard from "./workCard";
 import { WorkDetail } from "./types";
 
