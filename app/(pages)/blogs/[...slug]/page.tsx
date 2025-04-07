@@ -9,8 +9,6 @@ export default function Page() {
   const params = useParams();
   const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 
-  console.log("Params:", slug);
-
   const blogComponents: Record<string, React.ReactNode> = {
     "how-to-implement-esewa-payment-in-remix-app": <EsewaRemixBlog />,
   };
