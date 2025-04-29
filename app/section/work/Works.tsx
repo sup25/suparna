@@ -17,8 +17,7 @@ const Works = () => {
   });
 
   const [works, setWorks] = useState<WorkDetail[]>([]);
-  const { isLoading, error } = useFetchWorks(setWorks);
-
+  const { isLoading, error, hasFetched } = useFetchWorks(setWorks);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
 
@@ -30,7 +29,7 @@ const Works = () => {
     }, 100);
   };
 
-  if (isLoading)
+  if (!hasFetched || isLoading)
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loading />

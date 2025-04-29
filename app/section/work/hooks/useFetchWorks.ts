@@ -7,6 +7,7 @@ export const useFetchWorks = (
 ) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
     const fetchWorks = async () => {
@@ -30,10 +31,11 @@ export const useFetchWorks = (
         }
       } finally {
         setIsLoading(false);
+        setHasFetched(true);
       }
     };
     fetchWorks();
   }, [setWorks]);
 
-  return { isLoading, error };
+  return { isLoading, error, hasFetched };
 };
