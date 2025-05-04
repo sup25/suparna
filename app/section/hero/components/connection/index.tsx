@@ -27,7 +27,7 @@ const Connection = () => {
     },
     {
       name: "Resume",
-      url: "https://drive.google.com/file/d/1mgGR1l-VGbYOouIgi9Ytj88vxrriqgrT/view?usp=sharing",
+      url: "https://drive.google.com/file/d/1NlgiCMh9XmEvm8r2IFhFHAjklk3qb5Cm/view",
       icon: <FileUser size={50} />,
     },
   ];
