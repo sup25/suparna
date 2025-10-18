@@ -15,9 +15,9 @@ const Blogs = () => {
   return (
     <main {...(isMobile ? swipeHandlers : {})} className="section ">
       <div className="container px-4 mx-auto">
-        <div className="min-h-screen py-16 ">
+        <div className=" py-28 ">
           <Animate.FadeDown>
-            <h1 className="heading font-dmSerifDisplay mb-8 text-[rgb(var(--foreground))]">
+            <h1 className="heading font-dmSerifDisplay text-[rgb(var(--foreground))] my-10">
               Latest Blog Posts
             </h1>
             <div className="grid gap-6 ">

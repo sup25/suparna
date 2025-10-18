@@ -62,7 +62,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
     gallery: (
       <div className="relative w-full h-full bg-gray-900 flex items-center justify-center p-3 md:p-6">
         <AnimatePresence mode="wait">
-          <div className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center">
+          <div className="relative w-full  flex items-center justify-center">
             {!imageLoaded && <Loading />}
             <motion.img
               key={currentImageIndex}
@@ -183,7 +183,7 @@ const PopUpWorkDetails = ({ closePopUp, work }: Props) => {
     >
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-gray-900 rounded-lg shadow-lg w-full max-w-[95vw] md:max-w-5xl max-h-[85vh] flex flex-col border border-[rgb(255,215,0)]/20"
+        className="bg-gray-900 rounded-lg  w-full max-w-screen-xl   flex flex-col border border-[rgb(255,215,0)]/20"
         initial={{ scale: 0.98, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.98, opacity: 0 }}

@@ -10,7 +10,9 @@ import { Loading } from "@/app/components/loading";
 import NoWorkToShow from "@/app/components/noWork";
 import { SomethingWentWrong } from "@/app/components/somethingWentWrong";
 import { ChevronUp } from "lucide-react";
-
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { createPortal } from "react-dom";
 const Works = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
     pathLeft: "specialties",
@@ -23,41 +25,41 @@ const Works = () => {
   const [selectedWork, setSelectedWork] = useState<WorkDetail | null>(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
 
-  // Custom style for the button animation
-  const animationKeyframes = `
-    @keyframes fade-in {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  `;
-
   const worksSectionRef = useRef<HTMLDivElement>(null);
 
   // Add scroll event listener to show/hide the scroll button
   useEffect(() => {
-    const handleScroll = () => {
-      // Show button when user scrolls down more than 300px
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
+    // Use GSAP ScrollTrigger to monitor scroll position
+    ScrollTrigger.create({
+      start: "top -300px",
+      end: "max",
+      onUpdate: (self) => {
+        if (self.scroll() > 300) {
+          setShowScrollButton(true);
+        } else {
+          setShowScrollButton(false);
+        }
+      },
+    });
 
-    // Add event listener
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    // Get the ScrollSmoother instance
+    const smoother = ScrollSmoother.get();
+
+    if (smoother) {
+      smoother.scrollTo(0, true, "power2.inOut");
+    } else {
+      // Fallback for regular scroll
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   if (!hasFetched || isLoading)
@@ -81,35 +83,39 @@ const Works = () => {
   };
 
   return (
-    <div {...(isMobile ? swipeHandlers : {})} className="section">
-      <style jsx>{animationKeyframes}</style>
-      {showScrollButton && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-[rgb(var(--foreground))] text-[rgb(var(--background))] p-2 w-10 h-10 flex items-center justify-center rounded-full shadow-lg z-50 hover:bg-opacity-90 transition-all duration-300 animate-fade-in"
-          aria-label="Scroll to top"
-        >
-          <ChevronUp size={20} />
-        </button>
-      )}
-      <div className="container">
-        {showPopup && selectedWork && (
-          <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
-        )}
-        <Animate.FadeDown className="relative">
-          <div
-            ref={worksSectionRef}
-            className="relative mx-auto px-4 z-10 pt-16"
+    <>
+      {showScrollButton &&
+        createPortal(
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 bg-[rgb(var(--foreground))] text-[rgb(var(--background))] p-2 w-10 h-10 flex items-center justify-center rounded-full shadow-lg z-[9999] hover:bg-opacity-90 transition-all duration-300"
+            aria-label="Scroll to top"
           >
-            <WorkSection
-              works={works}
-              title="My Works"
-              onShowPopup={handleShowPopup}
-            />
-          </div>
-        </Animate.FadeDown>
+            <ChevronUp size={20} />
+          </button>,
+          document.body
+        )}
+      {showPopup && selectedWork && (
+        <PopUPWorkDetails closePopUp={handleClosePopup} work={selectedWork} />
+      )}
+
+      <div {...(isMobile ? swipeHandlers : {})} className="section">
+        <div className="container">
+          <Animate.FadeDown className="relative">
+            <div
+              ref={worksSectionRef}
+              className="relative mx-auto px-4 z-10 pt-16"
+            >
+              <WorkSection
+                works={works}
+                title="My Works"
+                onShowPopup={handleShowPopup}
+              />
+            </div>
+          </Animate.FadeDown>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

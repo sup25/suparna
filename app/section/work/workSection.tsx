@@ -1,7 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import WorkCard from "./workCard";
 import { WorkDetail } from "./types";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface WorkSectionProps {
   works: WorkDetail[];
@@ -14,15 +18,45 @@ const WorkSection: React.FC<WorkSectionProps> = ({
   title,
   onShowPopup,
 }) => {
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      gsap.fromTo(
+        card,
+        { autoAlpha: 0, y: 60 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
-    <div className="">
-      <h2 className="heading  font-dmSerifDisplay text-center  text-[rgb(var(--foreground))] mb-10">
+    <>
+      <h1 className="heading font-dmSerifDisplay text-center text-[rgb(var(--foreground))] my-10">
         {title}
-      </h2>
+      </h1>
       {works.map((work, index) => (
-        <WorkCard key={index} work={work} onShowPopup={onShowPopup} />
+        <div
+          key={index}
+          ref={(el) => {
+            if (el) cardsRef.current[index] = el;
+          }}
+        >
+          <WorkCard work={work} onShowPopup={onShowPopup} />
+        </div>
       ))}
-    </div>
+    </>
   );
 };
 

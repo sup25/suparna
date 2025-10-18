@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useSwipeableMobile } from "@/app/hooks/useSwipeableMobile";
 import { Animate } from "@/app/animation";
+import { PhoneCall } from "lucide-react";
 
 const Contact = () => {
   const { swipeHandlers, isMobile } = useSwipeableMobile({
@@ -24,14 +25,6 @@ const Contact = () => {
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
     <div {...(isMobile ? swipeHandlers : {})} className="section">
       <motion.section
@@ -41,9 +34,9 @@ const Contact = () => {
         animate="visible"
       >
         <Animate.FadeDown className="container relative mx-auto px-4 max-w-4xl">
-          <div className="heading font-dmSerifDisplay text-center text-[rgb(var(--foreground))] mb-8">
+          <h1 className="heading font-dmSerifDisplay text-center text-[rgb(var(--foreground))] my-10">
             Let&apos;s Connect!
-          </div>
+          </h1>
           <p className="md:text-2xl text-xl text-center font-inter text-[rgb(var(--foreground))]-800 mb-12">
             I&apos;m always excited to collaborate on new projects and ideas.
             Let&apos;s create something amazing together!
@@ -98,13 +91,8 @@ const PhoneDisplay = () => (
     href="tel:+9779861142179"
     className="flex items-center hover:scale-105 justify-center gap-3 bg-[rgb(var(--foreground))] text-[rgb(var(--background))] font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer no-underline"
   >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg"
-      alt="Nepal Flag"
-      className="w-8 h-8"
-    />
-    <span className="md:text-xl text-base font-inter font-semibold">
-      +9779861142179
+    <span className="md:text-xl flex items-center gap-2 text-base font-inter font-semibold">
+      <PhoneCall className="w-6 h-6" /> Call Me
     </span>
   </a>
 );
