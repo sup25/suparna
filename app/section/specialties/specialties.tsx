@@ -12,7 +12,7 @@ import {
   SiWordpress,
   SiRemix,
   SiDocker,
-  SiAwselasticloadbalancing,
+  SiStrapi,
 } from "react-icons/si";
 
 export const specialties = [
@@ -35,6 +35,10 @@ export const specialties = [
   {
     name: "Remix",
     icon: <SiRemix className="text-[rgb(var(--background))] w-12 h-12" />,
+  },
+  {
+    name: "Strapi",
+    icon: <SiStrapi className="text-[rgb(var(--background))] w-12 h-12" />,
   },
   {
     name: "WordPress",

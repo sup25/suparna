@@ -12,6 +12,7 @@ import Navbar from "./components/navbar";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { metadata } from "./metadata";
 import Footer from "./components/footer";
+import SmoothScrollWrapper from "./components/SmoothScrollWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,11 +61,17 @@ export default function RootLayout({
       <ThemeProvider>
         <TooltipProvider>
           <body
-            className={`${geistSans.variable} ${inter.variable} ${marcellus.variable} ${bricolage.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
+            className={`flex flex-col min-h-screen ${geistSans.variable} ${inter.variable} ${marcellus.variable} ${bricolage.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
           >
             <Navbar />
-            {children}
-            <Footer />
+            <main className="flex-grow">
+              <SmoothScrollWrapper>
+                <div className="flex flex-col min-h-screen">
+                  <div className="flex-grow">{children}</div>
+                  <Footer />
+                </div>
+              </SmoothScrollWrapper>
+            </main>
           </body>
         </TooltipProvider>
       </ThemeProvider>

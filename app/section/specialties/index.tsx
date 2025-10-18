@@ -11,9 +11,9 @@ const Specialties = () => {
   return (
     <div {...(isMobile ? swipeHandlers : {})} className="section">
       <div className="container">
-        <div className="min-h-[80vh]   text-white flex flex-col items-center justify-center py-16 ">
-          <Animate.FadeDown className="text-center max-w-2xl py-4">
-            <h1 className="heading  font-dmSerifDisplay text-[rgb(var(--foreground))] mb-4">
+        <div className="  text-white flex flex-col items-center justify-center pt-24 ">
+          <Animate.FadeDown className="text-center max-w-2xl ">
+            <h1 className="heading  font-dmSerifDisplay text-[rgb(var(--foreground))] my-10">
               My Specialties
             </h1>
             <p className="text-lg text-[rgb(var(--foreground))] font-inter my-6">

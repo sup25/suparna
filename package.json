@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.0.3",
@@ -23,6 +24,7 @@
     "framer-motion": "^11.11.4",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.13.0",
     "highlight.js": "^11.10.0",
     "lucide-react": "^0.451.0",
     "next": "14.2.14",
@@ -45,6 +47,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/gsap": "^1.20.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
