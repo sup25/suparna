@@ -13,6 +13,7 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { metadata } from "./metadata";
 import Footer from "./components/footer";
 import SmoothScrollWrapper from "./components/SmoothScrollWrapper";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
                 </div>
               </SmoothScrollWrapper>
             </main>
+            <SpeedInsights />
           </body>
         </TooltipProvider>
       </ThemeProvider>
