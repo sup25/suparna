@@ -4,19 +4,19 @@ import { Components } from "react-markdown";
 export const components: Components = {
   h1: ({ node, ...props }) => (
     <h1
-      className="heading font-dmSerifDisplay font-bold text-[rgb(var(--foreground))] border-b border-gray-200 tracking-tight leading-tight pb-4 mb-6"
+      className="heading font-bricolage font-bold  border-b border-gray-200 tracking-tight leading-tight pb-4 mb-6"
       {...props}
     />
   ),
   h2: ({ node, ...props }) => (
     <h2
-      className="text-3xl font-marcellus  font-semibold text-[rgb(var(--foreground))] border-b border-gray-200 tracking-tight leading-tight mt-8 pb-3 mb-4"
+      className="text-3xl font-dmSerifDisplay  font-semibold  border-b border-gray-200 tracking-tight leading-tight mt-8 pb-3 mb-4"
       {...props}
     />
   ),
   h3: ({ node, ...props }) => (
     <h3
-      className="text-2xl font-marcellus  font-semibold text-[rgb(var(--foreground))] border-b border-gray-200 tracking-tight leading-snug mt-6  mb-3"
+      className="text-2xl font-dmSerifDisplay  font-semibold  border-b border-gray-200 tracking-tight leading-snug mt-6  mb-3"
       {...props}
     />
   ),
@@ -41,29 +41,33 @@ export const components: Components = {
     );
   },
   a: ({ node, ...props }) => (
-    <a className="font-bold font-inter " rel="noopener noreferrer" {...props} />
+    <a
+      className="font-bold font-marcellus "
+      rel="noopener noreferrer"
+      {...props}
+    />
   ),
   p: ({ node, ...props }) => (
-    <p className="text-base font-inter  leading-relaxed " {...props} />
+    <p className="text-base font-marcellus  leading-relaxed " {...props} />
   ),
   blockquote: ({ node, ...props }) => (
     <blockquote
-      className="font-inter border-[#FFD700] border-l-4  pl-6 py-4 my-6 bg-blue-50  italic text-black  rounded-r-xl"
+      className="font-marcellus border-[#FFD700] border-l-4  pl-6 py-4 my-6 bg-blue-50  italic text-black  rounded-r-xl"
       {...props}
     />
   ),
   ul: ({ node, ...props }) => (
     <ul
-      className="list-disc font-inter list-outside ml-6 my-4 space-y-2"
+      className="list-disc font-marcellus list-outside ml-6 my-4 space-y-2"
       {...props}
     />
   ),
   li: ({ node, ...props }) => (
-    <li className="pl-2 font-inter leading-relaxed" {...props} />
+    <li className="pl-2 font-marcellus leading-relaxed" {...props} />
   ),
   ol: ({ node, ...props }) => (
     <ol
-      className="list-decimal  font-inter list-outside ml-6 my-4 space-y-2"
+      className="list-decimal  font-marcellus list-outside ml-6 my-4 space-y-2"
       {...props}
     />
   ),

@@ -11,12 +11,15 @@ const TitleSlogan = () => {
   if (!isClient) return null;
   return (
     <div className="w-full ">
-      <h1 className=" heading font-dmSerifDisplay text-start text-[rgb(var(--foreground))] mb-8">
-        Suparna Adhikari
-      </h1>
+      <div className="hero-label mb-8">
+        <div className="inline-block px-3 py-1.5 border border-black">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-light">
+            Full-Stack Developer
+          </span>
+        </div>
+      </div>
 
       <div className="mt-4  flex items-center ">
-        <GitBranch size={40} className="mr-2 text-[rgb(var(--foreground))]" />
         <h2 className="md:text-2xl text-xl font-medium font-inter text-[rgb(var(--foreground))] mt-4">
           Bridging Front and Back-End for Success
         </h2>

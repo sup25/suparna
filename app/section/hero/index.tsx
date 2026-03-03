@@ -1,23 +1,36 @@
 "use client";
 
-import { Animate } from "@/app/animation";
-import Connection from "./components/connection";
-import Description from "./components/description";
-import TitleSlogan from "./components/titleSlogan";
+import { useRef } from "react";
+import Watermark from "./Watermark";
+import HeroContent from "./HeroContent";
+import { useHeroAnimation } from "@/app/hooks/useHeroAnimation";
 
 const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const watermarkRef = useRef<HTMLDivElement>(null);
+
+  useHeroAnimation({
+    containerRef,
+    heroRef,
+    watermarkRef,
+  });
+
   return (
-    <div className="section">
-      <div className="container">
-        <section className="flex gap-10 flex-col justify-center items-center h-[75vh] overflow-hidden">
-          <Animate.FadeDown className="flex flex-col justify-start gap-10">
-            <TitleSlogan />
-            <Description />
-            <Connection />
-          </Animate.FadeDown>
-        </section>
+    <section
+      ref={containerRef}
+      className="relative overflow-hidden section isolate"
+      id="sup"
+    >
+      <Watermark ref={watermarkRef} />
+
+      <div
+        ref={heroRef}
+        className="relative z-10 container min-h-screen flex items-center "
+      >
+        <HeroContent />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,40 +1,63 @@
+import { metadata } from "./metadata";
+
 import {
   Inter,
   DM_Serif_Display,
   Marcellus,
   Bricolage_Grotesque,
+  Rampart_One,
+  Barriecito,
+  Bungee_Shade,
 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { ThemeProvider } from "./context/themeProvider";
 import Navbar from "./components/navbar";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { metadata } from "./metadata";
 import Footer from "./components/footer";
-import SmoothScrollWrapper from "./components/SmoothScrollWrapper";
+
+export { metadata };
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
   variable: "--font-inter",
-});
-const marcellus = Marcellus({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-marcellus",
 });
 
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-dm-serif",
 });
+
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-marcellus",
+});
+
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-bricolage",
+});
+
+const rampartOne = Rampart_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-rampart-one",
+});
+
+const barriecito = Barriecito({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-barriecito",
+});
+
+const bungeeShade = Bungee_Shade({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bungee-shade",
 });
 
 const geistSans = localFont({
@@ -49,32 +72,35 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export { metadata };
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <ThemeProvider>
+    <html
+      lang="en"
+      className={`
+        ${inter.variable}
+        ${dmSerifDisplay.variable}
+        ${marcellus.variable}
+        ${bricolage.variable}
+        ${rampartOne.variable}
+        ${barriecito.variable}
+        ${bungeeShade.variable}
+        ${geistSans.variable}
+        ${geistMono.variable}
+      `}
+    >
+      <body className="antialiased ">
         <TooltipProvider>
-          <body
-            className={`flex flex-col min-h-screen ${geistSans.variable} ${inter.variable} ${marcellus.variable} ${bricolage.variable} ${dmSerifDisplay.variable} ${geistMono.variable} antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))]`}
-          >
-            <Navbar />
-            <main className="flex-grow">
-              <SmoothScrollWrapper>
-                <div className="flex flex-col min-h-screen">
-                  <div className="flex-grow">{children}</div>
-                  <Footer />
-                </div>
-              </SmoothScrollWrapper>
-            </main>
-          </body>
+          <Navbar />
+          <main className="flex flex-col min-h-screen">
+            <div className="flex-grow">{children}</div>
+            <Footer />
+          </main>
         </TooltipProvider>
-      </ThemeProvider>
+      </body>
     </html>
   );
 }
