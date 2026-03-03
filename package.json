@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "build": "next build ",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
@@ -21,16 +22,12 @@
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.11.4",
-    "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "gsap": "^3.13.0",
     "highlight.js": "^11.10.0",
     "lucide-react": "^0.451.0",
-    "next": "14.2.14",
-    "next-mdx-remote": "^5.0.0",
-    "next-sitemap": "^4.2.3",
-    "raw-loader": "^4.0.2",
+    "next": "^16.1.6",
+    "next-mdx-remote": "^6.0.0",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.5",
@@ -38,6 +35,7 @@
     "react-markdown": "^9.0.1",
     "react-swipeable": "^7.0.2",
     "react-syntax-highlighter": "^15.6.1",
+    "react-turnstile": "^1.1.5",
     "react-typed": "^2.0.12",
     "rehype-highlight": "^7.0.1",
     "rehype-slug": "^6.0.0",
@@ -47,7 +45,6 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/gsap": "^1.20.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -1,55 +1,86 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
-import { useTheme } from "../../context/themeProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Animate } from "@/app/animation";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const { isDarkTheme, toggleTheme } = useTheme();
+  const [active, setActive] = useState("");
+
+  const isHome = pathname === "/";
 
   const Links = [
-    { id: "sup", name: "Sup", href: "/" },
-    { id: "works", name: "works", href: "/works" },
-    { id: "specialties", name: "specialties", href: "/specialties" },
-    { id: "contact", name: "contact", href: "/contact" },
-    { id: "blogs", name: "blogs", href: "/blogs" },
+    { id: "sup", name: "Sup", href: "/#sup" },
+    { id: "about", name: "About", href: "/#about" },
+    { id: "works", name: "Works", href: "/#works" },
+    { id: "contact", name: "Contact", href: "/#contact" },
   ];
 
+  // Only run section detection on homepage
+  useEffect(() => {
+    if (!isHome) {
+      setActive(""); // prevent sup being active on blog
+      return;
+    }
+
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [isHome]);
+
+  const base =
+    "relative md:text-xl sm:text-sm text-xs font-inter font-bold uppercase cursor-pointer transition-colors duration-300";
+
+  const underline =
+    "after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-current";
+
   return (
-    <Animate.ZoomIn className="section sticky top-6 z-[99999] flex justify-center mb-5">
+    <Animate.ZoomIn className="section sticky top-6 z-50 flex justify-center">
       <div className="container flex justify-center">
-        <nav
-          className={`flex ${
-            isDarkTheme
-              ? "bg-[rgb(var(--foreground))] text-black"
-              : "bg-[rgb(var(--foreground))] text-white"
-          } shadow px-4 py-2 w-fit justify-center rounded-full transition-colors duration-300`}
-        >
+        <nav className="flex w-fit justify-center rounded-full px-4 py-2 backdrop-blur-lg bg-white/30 shadow-md border border-white/20">
           <div className="md:space-x-4 space-x-2 flex items-center">
-            {Links.map((link) => (
-              <Link
-                href={link.href}
-                className={`relative md:text-xl sm:text-sm text-xs font-inter font-bold uppercase cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:scale-x-100 ${
-                  pathname === link.href ? "after:scale-x-100" : ""
-                }`}
-                key={link.id}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <button
-              onClick={toggleTheme}
-              className="ml-4 p-2 bg-transparent rounded focus:outline-none"
+            {Links.map((link) => {
+              const isActive = isHome && active === link.id;
+
+              return (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  className={`${base} ${
+                    isActive ? `${underline} text-black` : "text-gray-700"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+
+            {/* Blog link */}
+            <Link
+              href="/blogs"
+              className={`${base} ${
+                pathname.startsWith("/blogs")
+                  ? `${underline} text-black`
+                  : "text-gray-700"
+              }`}
             >
-              {isDarkTheme ? (
-                <FaSun className="text-yellow-400 hover:text-yellow-500 transition duration-300" />
-              ) : (
-                <FaMoon className="text-white hover:text-gray-300 transition duration-300" />
-              )}
-            </button>
+              Blog
+            </Link>
           </div>
         </nav>
       </div>

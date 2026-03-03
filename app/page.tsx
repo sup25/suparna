@@ -1,18 +1,17 @@
 "use client";
 import Hero from "./section/hero";
-import { useSwipeableMobile } from "./hooks/useSwipeableMobile";
+
+import AboutSection from "./section/about";
+import BentoLayout from "./section/works";
+import ContactSection from "./section/contact";
 
 export default function Home() {
-  const { swipeHandlers, isMobile } = useSwipeableMobile({
-    pathLeft: "works",
-    pathRight: "",
-  });
-
   return (
-    <div {...(isMobile ? swipeHandlers : {})} className="section">
-      <div className="container">
-        <Hero />
-      </div>
+    <div className="w-full">
+      <Hero />
+      <AboutSection />
+      <BentoLayout />
+      <ContactSection />
     </div>
   );
 }
