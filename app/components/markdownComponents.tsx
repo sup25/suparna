@@ -10,13 +10,13 @@ export const components: Components = {
   ),
   h2: ({ node, ...props }) => (
     <h2
-      className="text-3xl font-dmSerifDisplay  font-semibold  border-b border-gray-200 tracking-tight leading-tight mt-8 pb-3 mb-4"
+      className="text-3xl font-bricolage font-semibold  border-b border-gray-200 tracking-tight leading-tight mt-8 pb-3 mb-4"
       {...props}
     />
   ),
   h3: ({ node, ...props }) => (
     <h3
-      className="text-2xl font-dmSerifDisplay  font-semibold  border-b border-gray-200 tracking-tight leading-snug mt-6  mb-3"
+      className="text-2xl font-bricolage font-semibold  border-b border-gray-200 tracking-tight leading-snug mt-6  mb-3"
       {...props}
     />
   ),

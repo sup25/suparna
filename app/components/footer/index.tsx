@@ -49,7 +49,7 @@ const Footer = () => {
             <h2 className="text-2xl md:text-3xl font-bricolage font-semibold tracking-tight">
               Building something meaningful
             </h2>
-            <p className="mt-4 text-sm font-dmSerifDisplay text-black/60 max-w-sm">
+            <p className="mt-4 text-sm font-marcellus text-black/60 max-w-sm">
               Available for freelance and full-time opportunities. Open to
               collaborations and interesting projects.
             </p>

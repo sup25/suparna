@@ -85,7 +85,7 @@ function ProjectCard({
           {project.type}
         </div>
 
-        <h3 className="font-semibold  font-dmSerifDisplay  leading-tight text-white text-sm sm:text-lg md:text-xl">
+        <h3 className="font-semibold  font-bricolage leading-tight text-white text-sm sm:text-lg md:text-xl">
           {project.title}
         </h3>
 

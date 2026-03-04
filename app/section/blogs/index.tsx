@@ -34,7 +34,7 @@ const Blogs = () => {
                         ))}
                       </div>
 
-                      <h2 className="text-2xl font-dmSerifDisplay font-semibold  mb-3 group-hover:text-blue-600">
+                      <h2 className="text-2xl font-bricolagefont-semibold  mb-3 group-hover:text-blue-600">
                         {blog.title}
                       </h2>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -17,34 +17,65 @@ export const useHeroAnimation = ({
   heroRef,
   watermarkRef,
 }: Props) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+      gsap.set(".hero-label", { opacity: 0, y: 16 });
+      gsap.set(".title-inner", { y: "110%" });
+      gsap.set(".hero-subtitle", { opacity: 0, y: 20 });
+      gsap.set(".accent-line", {
+        scaleX: 0,
+        transformOrigin: "left center",
+      });
 
-      tl.from(".hero-label", { opacity: 0, y: 16, duration: 0.7 })
-        .from(".title-inner", { y: "110%", duration: 1, stagger: 0.1 }, "-=0.3")
-        .from(".hero-subtitle", { opacity: 0, y: 20, duration: 0.8 }, "-=0.5")
-        .from(".accent-line", {
-          scaleX: 0,
-          transformOrigin: "left center",
+      const tl = gsap.timeline({
+        defaults: { ease: "power4.out" },
+      });
+
+      tl.to(".hero-label", {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+      })
+        .to(
+          ".title-inner",
+          {
+            y: "0%",
+            duration: 1,
+            stagger: 0.1,
+          },
+          "-=0.3",
+        )
+        .to(
+          ".hero-subtitle",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+          },
+          "-=0.5",
+        )
+        .to(".accent-line", {
+          scaleX: 1,
           duration: 0.8,
         });
 
-      // Content parallax
-      gsap.to(".hero-content", {
-        yPercent: -15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
+      if (heroRef.current) {
+        gsap.to(".hero-content", {
+          yPercent: -15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      }
 
-      // Watermark parallax
+      /* ---------------- WATERMARK PARALLAX ---------------- */
+
       if (watermarkRef.current) {
         gsap.to(watermarkRef.current, {
           yPercent: 10,
@@ -60,5 +91,5 @@ export const useHeroAnimation = ({
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [containerRef, heroRef, watermarkRef]);
 };

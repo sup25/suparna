@@ -38,7 +38,7 @@ const HeroContent = () => {
 
       <p className="hero-subtitle font-marcellus text-base md:text-lg font-light leading-relaxed text-[#6B6B6B]">
         I turn complex problems into clean, fast products
-        <em className="not-italic font-dmSerifDisplay text-[#1A1A1A]">
+        <em className="not-italic font-marcellus text-[#1A1A1A]">
           {" "}
           from the first commit to the final deploy.
         </em>{" "}

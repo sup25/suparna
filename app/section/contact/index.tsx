@@ -161,7 +161,7 @@ export default function ContactSection() {
             {/* Left info column */}
             <div ref={infoRef}>
               <SectionHeader title="Let's Talk" />
-              <p className="font-dmSerifDisplay text-gray-500 mb-12 max-w-[320px] leading-relaxed">
+              <p className="font-marcellus text-gray-500 mb-12 max-w-[320px] leading-relaxed">
                 Got a project in mind, or just want to say hi? My inbox is
                 always open — I'll get back to you within 24 hours.
               </p>
@@ -226,7 +226,7 @@ export default function ContactSection() {
                     <div className="flex flex-col gap-2 field-wrap">
                       <label
                         htmlFor="name"
-                        className="text-xs uppercase tracking-widest text-gray-400 font-dmSerifDisplay"
+                        className="text-xs uppercase tracking-widest text-gray-400 font-marcellus"
                       >
                         Name
                       </label>
@@ -238,14 +238,14 @@ export default function ContactSection() {
                         value={form.name}
                         onChange={handleChange}
                         required
-                        className="border border-gray-200 rounded-xl p-3 text-sm font-dmSerifDisplay outline-none focus:border-red-400 focus:ring-1 focus:ring-red-50 transition"
+                        className="border border-gray-200 rounded-xl p-3 text-sm font-bricolageoutline-none focus:border-red-400 focus:ring-1 focus:ring-red-50 transition"
                       />
                     </div>
 
                     <div className="flex flex-col gap-2 field-wrap">
                       <label
                         htmlFor="email"
-                        className="text-xs uppercase tracking-widest text-gray-400 font-dmSerifDisplay"
+                        className="text-xs uppercase tracking-widest text-gray-400 font-marcellus"
                       >
                         Email
                       </label>
@@ -257,7 +257,7 @@ export default function ContactSection() {
                         value={form.email}
                         onChange={handleChange}
                         required
-                        className="border border-gray-200 rounded-xl p-3 text-sm font-dmSerifDisplay outline-none focus:border-red-400 focus:ring-1 focus:ring-red-50 transition"
+                        className="border border-gray-200 rounded-xl p-3 text-sm font-bricolageoutline-none focus:border-red-400 focus:ring-1 focus:ring-red-50 transition"
                       />
                     </div>
                   </div>
@@ -265,7 +265,7 @@ export default function ContactSection() {
                   <div className="flex flex-col gap-2 mt-5 field-wrap">
                     <label
                       htmlFor="message"
-                      className="text-xs uppercase tracking-widest text-gray-400 font-dmSerifDisplay"
+                      className="text-xs uppercase tracking-widest text-gray-400 font-marcellus"
                     >
                       Message
                     </label>
@@ -276,7 +276,7 @@ export default function ContactSection() {
                       value={form.message}
                       onChange={handleChange}
                       required
-                      className="border border-gray-200 rounded-xl p-3 text-sm font-dmSerifDisplay outline-none focus:border-red-400 focus:ring-1 focus:ring-red-50 resize-none h-32 transition"
+                      className="border border-gray-200 rounded-xl p-3 text-sm font-bricolageoutline-none focus:border-red-400 focus:ring-1 focus:ring-red-50 resize-none h-32 transition"
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full px-8 py-4 bg-black text-white font-dmSerifDisplay text-sm rounded-xl border-2 border-black hover:bg-white hover:text-black hover:shadow-md transition-all duration-200 submit-btn"
+                    className="w-full px-8 py-4 bg-black text-white font-bricolagetext-sm rounded-xl border-2 border-black hover:bg-white hover:text-black hover:shadow-md transition-all duration-200 submit-btn"
                   >
                     {status === "sending" ? "Sending…" : "Send Message →"}
                   </button>

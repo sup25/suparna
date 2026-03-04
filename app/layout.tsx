@@ -2,7 +2,6 @@ import { metadata } from "./metadata";
 
 import {
   Inter,
-  DM_Serif_Display,
   Marcellus,
   Bricolage_Grotesque,
   Rampart_One,
@@ -21,13 +20,6 @@ export { metadata };
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-dm-serif",
 });
 
 const marcellus = Marcellus({
@@ -82,7 +74,7 @@ export default function RootLayout({
       lang="en"
       className={`
         ${inter.variable}
-        ${dmSerifDisplay.variable}
+       
         ${marcellus.variable}
         ${bricolage.variable}
         ${rampartOne.variable}
