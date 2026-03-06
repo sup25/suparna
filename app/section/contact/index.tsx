@@ -210,7 +210,7 @@ export default function ContactSection() {
               <Social />
             </div>
 
-            {/* Right form column — card with overflow-hidden so Turnstile clips cleanly */}
+            {/* Right form column */}
             <div className="bg-white rounded-2xl shadow-md contact-form-wrap overflow-hidden">
               <form onSubmit={handleSubmit}>
                 {/* All padded fields live here */}
