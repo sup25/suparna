@@ -34,7 +34,7 @@ const Watermark = forwardRef<HTMLDivElement, WatermarkProps>(
               key={i}
               className="block text-center whitespace-nowrap"
               style={{
-                fontSize: "clamp(18vw, 22vw, 260px)",
+                fontSize: "clamp(16vw, 22vw, 260px)",
                 fontFamily: "var(--font-bungee-shade), serif",
                 letterSpacing: "0.05em",
                 lineHeight: 0.9,

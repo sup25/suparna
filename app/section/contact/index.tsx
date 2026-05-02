@@ -161,7 +161,7 @@ export default function ContactSection() {
             {/* Left info column */}
             <div ref={infoRef}>
               <SectionHeader title="Let's Talk" />
-              <p className="font-marcellus text-gray-500 mb-12 max-w-[320px] leading-relaxed">
+              <p className="font-inter text-gray-500 mb-12 max-w-[320px] leading-relaxed">
                 Got a project in mind, or just want to say hi? My inbox is
                 always open — I'll get back to you within 24 hours.
               </p>
@@ -199,7 +199,7 @@ export default function ContactSection() {
                       <span className="text-xs uppercase tracking-widest text-gray-400">
                         {item.label}
                       </span>
-                      <span className="text-sm text-gray-700 font-marcellus">
+                      <span className="text-sm text-gray-700 font-inter">
                         {item.value}
                       </span>
                     </div>
@@ -226,7 +226,7 @@ export default function ContactSection() {
                     <div className="flex flex-col gap-2 field-wrap">
                       <label
                         htmlFor="name"
-                        className="text-xs uppercase tracking-widest text-gray-400 font-marcellus"
+                        className="text-xs uppercase tracking-widest text-gray-400 font-inter"
                       >
                         Name
                       </label>
@@ -245,7 +245,7 @@ export default function ContactSection() {
                     <div className="flex flex-col gap-2 field-wrap">
                       <label
                         htmlFor="email"
-                        className="text-xs uppercase tracking-widest text-gray-400 font-marcellus"
+                        className="text-xs uppercase tracking-widest text-gray-400 font-inter"
                       >
                         Email
                       </label>
@@ -265,7 +265,7 @@ export default function ContactSection() {
                   <div className="flex flex-col gap-2 mt-5 field-wrap">
                     <label
                       htmlFor="message"
-                      className="text-xs uppercase tracking-widest text-gray-400 font-marcellus"
+                      className="text-xs uppercase tracking-widest text-gray-400 font-inter"
                     >
                       Message
                     </label>

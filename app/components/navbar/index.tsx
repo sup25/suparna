@@ -67,7 +67,7 @@ const Navbar = () => {
   }, [isHome]);
 
   const base =
-    "relative inline-block md:text-xl sm:text-sm text-xs font-inter font-bold uppercase cursor-pointer transition-colors duration-300";
+    "relative inline-block md:text-xl text-sm  font-inter font-bold uppercase cursor-pointer transition-colors duration-300";
 
   const underline =
     "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:w-full after:bg-current";

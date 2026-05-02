@@ -41,33 +41,29 @@ export const components: Components = {
     );
   },
   a: ({ node, ...props }) => (
-    <a
-      className="font-bold font-marcellus "
-      rel="noopener noreferrer"
-      {...props}
-    />
+    <a className="font-bold font-inter " rel="noopener noreferrer" {...props} />
   ),
   p: ({ node, ...props }) => (
-    <p className="text-base font-marcellus  leading-relaxed " {...props} />
+    <p className="text-base font-inter  leading-relaxed " {...props} />
   ),
   blockquote: ({ node, ...props }) => (
     <blockquote
-      className="font-marcellus border-[#FFD700] border-l-4  pl-6 py-4 my-6 bg-blue-50  italic text-black  rounded-r-xl"
+      className="font-inter border-[#FFD700] border-l-4  pl-6 py-4 my-6 bg-blue-50  italic text-black  rounded-r-xl"
       {...props}
     />
   ),
   ul: ({ node, ...props }) => (
     <ul
-      className="list-disc font-marcellus list-outside ml-6 my-4 space-y-2"
+      className="list-disc font-inter list-outside ml-6 my-4 space-y-2"
       {...props}
     />
   ),
   li: ({ node, ...props }) => (
-    <li className="pl-2 font-marcellus leading-relaxed" {...props} />
+    <li className="pl-2 font-inter leading-relaxed" {...props} />
   ),
   ol: ({ node, ...props }) => (
     <ol
-      className="list-decimal  font-marcellus list-outside ml-6 my-4 space-y-2"
+      className="list-decimal  font-inter list-outside ml-6 my-4 space-y-2"
       {...props}
     />
   ),

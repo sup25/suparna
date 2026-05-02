@@ -51,6 +51,11 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      animation: {
+        "slide-up": "slide-up 1.1s cubic-bezier(0.16, 1, 0.3, 1)",
+        "fade-up": "fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both",
+        "expand-x": "expand-x 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+      },
       maxWidth: {
         container: "1280px",
       },

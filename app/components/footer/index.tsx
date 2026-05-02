@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 const Footer = () => {
   const year = new Date().getFullYear();
 
@@ -49,7 +47,7 @@ const Footer = () => {
             <h2 className="text-2xl md:text-3xl font-bricolage font-semibold tracking-tight">
               Building something meaningful
             </h2>
-            <p className="mt-4 text-sm font-marcellus text-black/60 max-w-sm">
+            <p className="mt-4 text-sm font-inter text-black/60 max-w-sm">
               Available for freelance and full-time opportunities. Open to
               collaborations and interesting projects.
             </p>
@@ -57,7 +55,7 @@ const Footer = () => {
 
           {/* Right Side */}
           <div className="flex flex-col items-start md:items-end gap-6">
-            <div className="text-xs font-marcellus text-black/50">
+            <div className="text-xs font-inter text-black/50">
               © {year} Suparna Adhikari
             </div>
           </div>

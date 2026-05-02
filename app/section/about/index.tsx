@@ -110,17 +110,17 @@ export default function AboutSection() {
         {/* ── Two-column body ── */}
         <div className="flex flex-col lg:flex-row items-stretch">
           {/* ── LEFT: bio text ── */}
-          <div className="flex-[56] min-w-0 pr-0 lg:pr-14 flex flex-col">
+          <div className="flex-[56] min-w-0 pr-0 lg:pr-14 flex flex-col text-justify">
             <p
               ref={(el) => {
                 eyebrowRefs.current[0] = el;
               }}
-              className="text-[10px] tracking-[0.28em] uppercase text-[#b0b0b0] font-marcellus mb-5"
+              className="text-[10px] tracking-[0.28em] uppercase text-[#b0b0b0] font-inter mb-5"
             >
               Background
             </p>
 
-            <p className="font-marcellus text-[0.95rem] md:text-[1rem] lg:text-[1.05rem] leading-[1.9] text-[#606060]">
+            <p className="font-inter text-[0.95rem] md:text-[1rem] lg:text-[1.05rem] leading-[1.9] text-[#606060]">
               {tokens.map((token, i) => {
                 const ref = (el: HTMLSpanElement | null) => {
                   wordRefs.current[i] = el;
@@ -177,7 +177,7 @@ export default function AboutSection() {
               ref={(el) => {
                 eyebrowRefs.current[1] = el;
               }}
-              className="text-[10px] tracking-[0.28em] uppercase text-[#b0b0b0] font-marcellus mb-5"
+              className="text-[10px] tracking-[0.28em] uppercase text-[#b0b0b0] font-inter mb-5"
             >
               Tech Stack
             </p>
@@ -190,7 +190,7 @@ export default function AboutSection() {
         {/* ── Bottom signature ── */}
         <div className="mt-16 flex items-center gap-5">
           <div className="h-px flex-1 bg-[#efefef]" />
-          <span className="text-[9px] tracking-[0.35em] uppercase text-[#ccc] font-marcellus">
+          <span className="text-[9px] tracking-[0.35em] uppercase text-[#ccc] font-inter">
             Suparna Adhikari
           </span>
         </div>

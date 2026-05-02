@@ -37,3 +37,34 @@ body {
 .main-wrapper > div {
   width: 100% !important;
 }
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes expand-x {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

@@ -17,7 +17,7 @@ const SocialLinks = [
   },
   {
     name: "Resume",
-    url: "https://drive.google.com/file/d/11AW3m20K0-h-dozKPpMKaAWuNIGcet8x/view",
+    url: "https://docs.google.com/document/d/1Xp8EGjwug3os5o-FwqaYJzM7p6TDC0x4PdmqAACLBuo/edit?tab=t.0",
     icon: <FileUser size={16} />,
     label: "cv",
   },
