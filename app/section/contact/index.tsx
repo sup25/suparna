@@ -161,51 +161,38 @@ export default function ContactSection() {
             {/* Left info column */}
             <div ref={infoRef}>
               <SectionHeader title="Let's Talk" />
-              <p className="font-inter text-gray-500 mb-12 max-w-[320px] leading-relaxed">
+              <p className="font-inter text-gray-500 mb-12 md:max-w-[420px] leading-relaxed">
                 Got a project in mind, or just want to say hi? My inbox is
-                always open — I'll get back to you within 24 hours.
+                always open. I'll get back to you within 24 hours.
               </p>
 
-              <ul className="flex flex-col gap-5">
+              {/* Info rows — minimal */}
+              <div className="flex flex-col gap-2 mb-9 font-inter">
                 {[
                   {
-                    icon: <FaEnvelope />,
-                    label: "Email",
-                    value: (
-                      <a href="mailto:asuparna25@gmail.com">
+                    key: "Email",
+                    val: (
+                      <a
+                        href="mailto:asuparna25@gmail.com"
+                        className="text-red-600 border-b border-red-200 pb-px hover:border-red-400 transition-colors"
+                      >
                         asuparna25@gmail.com
                       </a>
                     ),
                   },
-                  {
-                    icon: <FaLocationArrow />,
-                    label: "Location",
-                    value: "Kathmandu, Nepal",
-                  },
-                  {
-                    icon: <FaBolt />,
-                    label: "Response Time",
-                    value: "Within 24 hours",
-                  },
-                ].map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-3 contact-info-item"
-                  >
-                    <div className="flex-shrink-0 w-9 h-9 rounded-lg border border-red-100 bg-red-50 text-red-600 flex items-center justify-center transition-colors duration-200 hover:bg-red-100 hover:border-red-200">
-                      {item.icon}
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="text-xs uppercase tracking-widest text-gray-400">
-                        {item.label}
-                      </span>
-                      <span className="text-sm text-gray-700 font-inter">
-                        {item.value}
-                      </span>
-                    </div>
-                  </li>
+                  { key: "Based in", val: "Kathmandu, Nepal" },
+                  { key: "Replies in", val: "24 hours" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-baseline gap-4 text-sm">
+                    <span className="text-gray-400 w-24 shrink-0">
+                      {item.key}
+                    </span>
+                    <span className="text-gray-700">{item.val}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
+
+              <hr className="border-t border-gray-100 mb-7" />
 
               <Social />
             </div>
