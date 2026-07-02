@@ -2,18 +2,26 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://suparna.com.np`),
-  title: "Suparna Adhikari | Full Stack Developer & Software Engineer",
+  title: "Suparna Adhikari | Full Stack Developer & Software Engineer in Nepal",
   description:
-    "Experienced full stack developer dedicated to creating intuitive and engaging web and mobile applications.",
+    "Experienced full stack developer in Nepal dedicated to creating intuitive and engaging web and mobile applications.",
   keywords: [
-    "Full Stack Developer Nepal",
-    "React Developer Nepal",
-    "Next.js Developer Nepal",
+    "Full Stack Developer in Nepal",
+    "Full Stack Developer",
+    "React Developer in Nepal",
+    "Next.js Developer in Nepal",
     "Node.js Developer",
+    "Node.js Developer in Nepal",
     "TypeScript Developer",
-    "Hire Full Stack Developer Nepal",
+    "Hire Full Stack Developer in Nepal",
     "Suparna Adhikari",
-    "Software Engineer Nepal",
+    "Software Engineer in Nepal",
+    "Software Engineer",
+    "Web Developer in Nepal",
+    "React Native Developer Nepal",
+    "Full Stack Developer Kathmandu",
+    "JavaScript Developer Nepal",
+    "AWS Developer Nepal",
   ],
   alternates: {
     canonical: "./",

@@ -93,7 +93,11 @@ export default function RootLayout({
               "@type": "Person",
               name: "Suparna Adhikari",
               url: "https://suparna.com.np",
-              jobTitle: "Full Stack Developer",
+              jobTitle: [
+                "Full Stack Developer",
+                "Full Stack Developer in Nepal",
+                "Software Engineer",
+              ],
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Kathmandu",
