@@ -84,6 +84,48 @@ export default function RootLayout({
         ${geistMono.variable}
       `}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Suparna Adhikari",
+              url: "https://suparna.com.np",
+              jobTitle: "Full Stack Developer",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Kathmandu",
+                addressCountry: "NP",
+              },
+              sameAs: [
+                "https://www.linkedin.com/in/suparna-adhikari-b78b46176/",
+                "https://github.com/sup25",
+              ],
+              knowsAbout: [
+                "React",
+                "Next.js",
+                "Node.js",
+                "TypeScript",
+                "JavaScript",
+                "PostgreSQL",
+                "MongoDB",
+                "REST APIs",
+                "WebSockets",
+                "AWS",
+                "Docker",
+                "React Native",
+                "Prisma",
+                "Tailwind CSS",
+                "Stripe",
+                "CI/CD",
+                "GitHub Actions",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="antialiased ">
         <TooltipProvider>
           <Navbar />

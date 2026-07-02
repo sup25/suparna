@@ -5,6 +5,16 @@ export const metadata: Metadata = {
   title: "Suparna Adhikari | Full Stack Developer & Software Engineer",
   description:
     "Experienced full stack developer dedicated to creating intuitive and engaging web and mobile applications.",
+  keywords: [
+    "Full Stack Developer Nepal",
+    "React Developer Nepal",
+    "Next.js Developer Nepal",
+    "Node.js Developer",
+    "TypeScript Developer",
+    "Hire Full Stack Developer Nepal",
+    "Suparna Adhikari",
+    "Software Engineer Nepal",
+  ],
   alternates: {
     canonical: "./",
   },
@@ -13,6 +23,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -34,7 +45,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Suparna Adhikari | Full-Stack Developer & Software Engineer",
+    title:
+      "Suparna Adhikari | Full-Stack Developer & Software Engineer in Nepal",
     description:
       "Experienced full-stack developer dedicated to creating intuitive and engaging web and mobile applications.",
     url: "https://suparna.com.np",
@@ -46,7 +58,7 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/dmufwerzv/image/upload/v1732027708/suparna_js2fzt.png",
         width: 1200,
         height: 630,
-        alt: "Suparna Adhikari's Profile Preview Image",
+        alt: "Full-Stack Developer & Software Engineer in Nepal ",
       },
     ],
   },
