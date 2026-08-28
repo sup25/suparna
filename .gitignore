@@ -1,38 +1,124 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
+
+node_modules/
 /.pnp
-.pnp.js
-.yarn/install-state.gz
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+jspm_packages/
+bower_components/
+web_modules/
 
-# testing
-/coverage
 
-# next.js
 /.next/
 /out/
-
-# production
 /build
+dist/
+.vercel
+.netlify
+.serverless/
+.open-next/
+.vinxi/
 
-# misc
-.DS_Store
+
+.turbo
+.swc/
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.rollup.cache/
+.rpt2_cache/
+*.tsbuildinfo
+next-env.d.ts
+
+
+/coverage
+*.lcov
+.nyc_output/
+/playwright-report/
+/test-results/
+/blob-report/
+/playwright/.cache/
+/cypress/videos/
+/cypress/screenshots/
+
+
+.env
+.env.*
+!.env.example
 *.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+secrets.json
 
-# debug
+
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.*.json
+*.heapsnapshot
+*.cpuprofile
 
-# local env files
-.env*.local
-.env
+
+.claude/
+.agents/
+.cursor/
+.cursorignore
+.windsurf/
+.aider*
+.continue/
+.codeium/
+.github/copilot-instructions.md
+CLAUDE.local.md
+skills-lock.json
 
 
-# vercel
-.vercel
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.history/
+*.swp
+*.swo
+*~
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+
+*.local
+tmp/
+temp/
+.tmp/
+*.bak
+*.orig
+*.rej
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
