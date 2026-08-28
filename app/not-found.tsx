@@ -1,112 +1,39 @@
-"use client";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import Link from "next/link";
 
-const NotFoundPage = () => {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const codeRef = useRef<HTMLSpanElement>(null);
-  const textRef = useRef<HTMLParagraphElement>(null);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-      // Staggered fade-up entrance — clean, no horizontal movement
-      tl.fromTo(
-        codeRef.current,
-        { opacity: 0, y: 30, filter: "blur(8px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, delay: 0.2 },
-      )
-        .fromTo(
-          lineRef.current,
-          { scaleX: 0, opacity: 0 },
-          { scaleX: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" },
-          "-=0.4",
-        )
-        .fromTo(
-          headingRef.current,
-          { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          "-=0.2",
-        )
-        .fromTo(
-          textRef.current,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.55 },
-          "-=0.35",
-        )
-        .fromTo(
-          buttonRef.current,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          "-=0.3",
-        );
-    });
-
-    return () => ctx.revert();
-  }, []);
-
-  const handleMouseEnter = () => {
-    gsap.to(buttonRef.current, {
-      scale: 1.05,
-      duration: 0.22,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseLeave = () => {
-    gsap.to(buttonRef.current, {
-      scale: 1,
-      duration: 0.22,
-      ease: "power2.out",
-    });
-  };
-
+export default function NotFound() {
   return (
-    <div className="relative flex flex-col items-center justify-center h-[80vh] text-center overflow-hidden">
-      {/* 404 number */}
-      <span
-        ref={codeRef}
-        className="block text-[10rem] font-bricolage leading-none font-black tracking-tighter select-none"
-      >
-        404
-      </span>
+    <div className="section">
+      <div className="container flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
+        <span className="select-none font-bricolage text-[7rem] font-black leading-none tracking-tighter text-fg sm:text-[10rem]">
+          404
+        </span>
 
-      {/* Divider line */}
-      <div ref={lineRef} className="w-16 h-px my-5 origin-left bg-black" />
+        <div className="my-6 h-px w-16 bg-accent" aria-hidden="true" />
 
-      {/* Heading */}
-      <h1
-        ref={headingRef}
-        className="text-2xl font-semibold tracking-wide text-black mb-3"
-      >
-        Page Not Found
-      </h1>
+        <h1 className="mb-3 font-bricolage text-2xl font-bold tracking-tight text-fg">
+          Page not found
+        </h1>
 
-      {/* Sub text */}
-      <p
-        ref={textRef}
-        className="text-sm text-zinc-400 mb-10 max-w-xs leading-relaxed"
-        style={{ fontFamily: "system-ui, sans-serif" }}
-      >
-        The page you&apos;re looking for has moved, been removed, or never
-        existed.
-      </p>
+        <p className="mb-10 max-w-sm font-inter text-sm leading-relaxed text-fg-muted">
+          The page you&apos;re looking for has moved, been removed, or never
+          existed.
+        </p>
 
-      {/* Button */}
-      <a
-        ref={buttonRef}
-        href="/"
-        className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-medium text-black"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        ← Go Back Home
-      </a>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/"
+            className="rounded-full bg-fg px-7 py-3 font-inter text-sm font-semibold text-bg-elevated transition-colors hover:bg-accent"
+          >
+            Go back home
+          </Link>
+          <Link
+            href="/blogs"
+            className="rounded-full border border-line-strong px-7 py-3 font-inter text-sm font-semibold text-fg transition-colors hover:border-accent hover:text-accent"
+          >
+            Read the blog
+          </Link>
+        </div>
+      </div>
     </div>
   );
-};
-
-export default NotFoundPage;
+}

@@ -1,17 +1,24 @@
-"use client";
-import Hero from "./section/hero";
+import Hero from "@/components/sections/hero";
+import AboutSection from "@/components/sections/about";
+import ExperienceSection from "@/components/sections/experience";
+import WorksSection from "@/components/sections/works";
+import SideProjectsSection from "@/components/sections/side-projects";
+import ContactSection from "@/components/sections/contact";
 
-import AboutSection from "./section/about";
-import BentoLayout from "./section/works";
-import ContactSection from "./section/contact";
-
+/**
+ * Home is a server component. Only the interactive sections below are client
+ * components, so the page's text ships in the initial HTML. Previously the
+ * whole page was marked "use client" and rendered nothing without JS.
+ */
 export default function Home() {
   return (
-    <div className="w-full">
+    <>
       <Hero />
       <AboutSection />
-      <BentoLayout />
+      <ExperienceSection />
+      <WorksSection />
+      <SideProjectsSection />
       <ContactSection />
-    </div>
+    </>
   );
 }
