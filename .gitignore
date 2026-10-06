@@ -122,3 +122,6 @@ temp/
 *.tar.gz
 *.7z
 *.rar
+
+# Assistant working context. Local only: never part of this site's history.
+AI_CONTEXT.md
