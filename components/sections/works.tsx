@@ -25,6 +25,7 @@ const spans: [number, number, number, number][] = [
   [1, 1, 1, 1], // Cramers
   [1, 1, 1, 1], // Graze & Co
   [2, 1, 2, 1], // CStoreSync: wide
+  [2, 2, 3, 2], // Pura Hisab: full-bleed closing block, two rows deep
 ];
 
 function ProjectCard({
@@ -182,7 +183,7 @@ export default function WorksSection() {
           index="03"
           eyebrow="Selected work"
           title="Things I've shipped"
-          intro="Client platforms, storefronts, and internal tools, each with a short write-up of what the problem was and what the work actually involved."
+          intro="Client platforms, storefronts, internal tools, and one product of my own, each with a short write-up of what the problem was and what the work actually involved."
         />
 
         <div className="bento-grid">

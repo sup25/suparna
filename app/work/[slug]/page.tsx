@@ -110,7 +110,7 @@ export default async function CaseStudyPage({ params }: Params) {
           {/* Cover */}
           <div className="relative mb-14 aspect-[16/9] overflow-hidden rounded-2xl border border-line bg-bg-subtle">
             <Image
-              src={project.image}
+              src={project.cover ?? project.image}
               alt={`${project.title}, ${project.type}`}
               fill
               sizes="(max-width: 1280px) 100vw, 1280px"

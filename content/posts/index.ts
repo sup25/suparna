@@ -2,6 +2,7 @@ import { body as esewaRemixBody } from "./esewa-remix";
 import { body as bleInExpoBody } from "./ble-in-expo";
 import { body as inRangeNotAllowedBody } from "./in-range-is-not-allowed";
 import { body as regexOverMlBody } from "./regex-over-ml-for-pii";
+import { body as exactlyOnceRecurringBody } from "./exactly-once-recurring-transactions";
 
 export type Post = {
   slug: string;
@@ -66,6 +67,17 @@ export const posts: Post[] = [
     readTime: "10 min read",
     tags: ["Go", "LLM", "Privacy", "Regex"],
     body: regexOverMlBody,
+  },
+  {
+    slug: "posting-a-recurring-transaction-exactly-once",
+    title: "Posting a Recurring Transaction Exactly Once",
+    description:
+      "How the recurring engine behind Pura Hisab posts the rent exactly once, in the right time zone, and never undoes a row you deleted on purpose.",
+    date: "2026-10-06",
+    displayDate: "October 2026",
+    readTime: "16 min read",
+    tags: ["PostgreSQL", "Node.js", "Scheduling", "Architecture"],
+    body: exactlyOnceRecurringBody,
   },
 ];
 
