@@ -6,6 +6,13 @@ export type Project = {
   /** Short line used on the bento tile and as the case-study meta description. */
   summary: string;
   image: string;
+  /**
+   * Optional override for the case-study cover only. `image` still drives the
+   * bento tile and the OpenGraph card, which want branding at thumbnail size
+   * under a scrim; a cover sits under a page that has already said the name in
+   * display type, so it can afford to show the product working instead.
+   */
+  cover?: string;
   tags: string[];
   /** External live URL, if the project is publicly reachable. */
   link?: string;
@@ -255,6 +262,71 @@ export const projects: Project[] = [
       outcome:
         "Assignment and follow up moved off the owner's memory and into something both roles can see. Staff open the app to find what is theirs, and the owner can tell what a shift actually did without asking the person who worked it.",
       stack: ["Next.js", "Node.js", "PostgreSQL", "AWS EC2"],
+    },
+  },
+  {
+    id: 8,
+    slug: "pura-hisab",
+    title: "Pura Hisab",
+    type: "Personal Finance App",
+    summary:
+      "A private rupee ledger connected to no bank, built across three repositories and three origins, with a recurring engine that posts rent exactly once and never undoes a row you deleted on purpose.",
+    /* Drawn rather than screenshotted: the ledger itself is the user's own
+       money, and a dashboard full of figures reads as noise once the tile's
+       scrim is over it. This is the recurrence rule instead, one occurrence
+       per month with the watermark partway along. Served from /public. */
+    image: "/work/pura-hisab.png",
+    /* The dashboard itself, from the demo account. Remote rather than local
+       because it is a real screenshot off the running app, uploaded to the
+       same CDN the other case studies use. */
+    cover:
+      "https://res.cloudinary.com/dqvk8jjox/image/upload/v1791273476/Opera_Snapshot_2026-10-06_134141_localhost_u049r7.png",
+    tags: [
+      "React 19",
+      "Express 5",
+      "PostgreSQL",
+      "Prisma",
+      "Vercel",
+      "Koyeb",
+    ],
+    link: "https://purahisab.com",
+    year: "2026",
+    roleId: "personal",
+    featured: true,
+    caseStudy: {
+      context:
+        "Every personal finance app that syncs with a bank makes the same trade on the user's behalf: hand over credentials, get automation back. Pura Hisab takes the other side of it. It is connected to nothing, not a bank, not a wallet, not a payment service, so it imports nothing and syncs with nothing, and every figure on every screen is the net of what the user typed. That constraint sets the whole product rather than limiting it. If the ledger is only as true as what you enter, entering has to be cheap, the month has to be the unit the interface thinks in, and the one category of money that genuinely repeats, meaning rent, a salary or a subscription, has to record itself instead of being typed twelve times a year. It also had to be a real deployment rather than a portfolio demo: three live origins, a session design that assumes the refresh cookie is the thing worth stealing, and a database that survives being left alone.",
+      work: [
+        "Built the whole system across three repositories: a one-page marketing site on Next.js, the app itself on React 19 with Vite, React Router and TanStack Query, and an Express 5 API over PostgreSQL through Prisma, with 27 paths and 38 operations documented in Swagger.",
+        "Arranged the three properties so the browser only ever addresses one origin: requests to /api/* are rewritten server-side to the API's host, which makes the refresh cookie same-origin rather than merely same-site and takes SameSite out of the load-bearing path entirely.",
+        "Built the session design around the assumption that the cookie is the target: the access token lives in memory and never survives a reload, refresh tokens rotate on every use, a signature-valid token is rejected unless it also has a live row in the database, and both refresh tokens and reset links are stored only as SHA-256 digests so a read-only leak hands over nothing usable.",
+        "Made concurrent 401s share one in-flight refresh, because the server rotates on every refresh and parallel refreshes would otherwise race and leave all but one presenting an already-revoked token.",
+        "Layered rate limiting by what each endpoint actually exposes, tightest on sign-in and password reset and looser on authenticated actions, then pinned the proxy hop count with its own test, since setting it one too low collapses every visitor into a single rate-limit bucket with nothing logging it.",
+        "Designed and built the recurring-transaction engine, where a due occurrence is written as an ordinary ledger row rather than a projection, so nothing downstream had to learn what a schedule is.",
+        "Made that engine exactly-once with two independent mechanisms: a per-schedule watermark recording the last calendar day generated through, so a deliberately deleted row is never re-posted, and a unique index on (recurring_id, date) to arbitrate the genuine race between the nightly sweep and a user's own page load.",
+        "Wrote the recurrence arithmetic as a pure function with no database access, clamping short months per occurrence and stepping the week rather than the weekday on multi-week intervals, which made the hard cases two-line tests and is also what the server-side preview reaches into, so the browser never reimplements leap years.",
+        "Handled calendar dates as YYYY-MM-DD text throughout, compared as text, after an earlier date-as-timestamp bug had been filing first- and last-of-month rows into the wrong month with nothing on screen looking broken.",
+        "Modelled accounts as first-class records with opening balances, archiving and transfers between them, where a transfer deliberately counts towards neither income nor expenses, and deleting an account that anything still points at is a 409 rather than a cascade.",
+        "Built the dashboard to derive every figure client-side from one fetch of the selected month, which is why that list is never paginated, since truncating it would make every total on the page wrong, plus monthly savings goals, a cumulative goal history, spending trend against a three-month average, and a PDF export generated from the same data the page is showing.",
+        "Deployed all three pieces to production, with the site and app on Vercel, the API on Koyeb, Postgres on Supabase and avatars on Cloudinary, plus DNS on Cloudflare kept unproxied deliberately, and a daily scheduled ping that runs a real query so the free database is never suspended for inactivity.",
+        "Gated both repositories on CI and local git hooks, with 449 backend tests (109 of them against a real database), 294 on the frontend, and a Playwright end-to-end layer that checks out both repositories to run.",
+      ],
+      outcome:
+        "A finance app that is honest about what it is: an account total is what has been recorded against that account, never a claim about what the account holds. Recurring money records itself without the ledger ever double-posting or quietly restoring something the user deleted, and the whole thing runs on free tiers without the two platform behaviours that look like outages, an API that scales to zero and a database that suspends itself, ever reaching a user.",
+      stack: [
+        "React 19",
+        "Vite",
+        "TypeScript",
+        "Express 5",
+        "PostgreSQL",
+        "Prisma",
+        "Next.js",
+        "Playwright",
+        "Vercel",
+        "Koyeb",
+        "Supabase",
+        "Cloudinary",
+      ],
     },
   },
 ];

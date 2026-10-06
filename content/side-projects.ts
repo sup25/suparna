@@ -1,7 +1,8 @@
 /**
- * Self-directed work, kept separate from `projects`, which is client
- * engagements only. Detail for the GitHub-hosted entries comes from the
- * repository READMEs; nothing here is inferred from the stack alone.
+ * Smaller self-directed work, kept separate from `projects`, which carries the
+ * entries that earned a full case study: client engagements, plus Pura Hisab.
+ * Detail for the GitHub-hosted entries comes from the repository READMEs;
+ * nothing here is inferred from the stack alone.
  */
 export type SideProject = {
   id: string;

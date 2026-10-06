@@ -192,7 +192,10 @@ export function caseStudySchema(project: {
     name: project.title,
     description: project.summary,
     url,
-    image: project.image,
+    /* Absolutised: project images may be local paths under /public, and a
+       relative URL is not a usable value for schema.org image. A no-op for the
+       entries that already carry a full URL. */
+    image: new URL(project.image, site.url).toString(),
     dateCreated: project.year,
     creator: { "@id": PERSON_ID },
     keywords: project.caseStudy.stack.join(", "),
